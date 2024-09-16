@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bec7e0aab985147469af91cd27aebf5e, type: 3}
+  m_Name: GameplaySettingsInstaller
+  m_EditorClassIdentifier: 
+  _playerParameters:
+    PawnPartsParameters:
+      PawnLegs: {fileID: 5806085127778254606, guid: 20e6b0d122ea1d84ba3a5a2908b2e1d6, type: 3}
+      PawnBody: {fileID: 517543274985353215, guid: 006d29d122ba826478602f90d9e7ff51, type: 3}
+      PawnWeapon: {fileID: 2134025917777486362, guid: 772c34f4f1e9a4a4996eb3b35908e091, type: 3}
+      LegsSortingOrder: 20
+      BodySortingOrder: 21
+      WeaponSortingOrder: 22
+  _enemyParameters:
+    PawnPartsParameters:
+      PawnLegs: {fileID: 5806085127778254606, guid: 20e6b0d122ea1d84ba3a5a2908b2e1d6, type: 3}
+      PawnBody: {fileID: 517543274985353215, guid: feeffc1fa4e8ea64eb2b379b1237c63b, type: 3}
+      PawnWeapon: {fileID: 2134025917777486362, guid: 772c34f4f1e9a4a4996eb3b35908e091, type: 3}
+      LegsSortingOrder: 10
+      BodySortingOrder: 12
+      WeaponSortingOrder: 11
+  _bossParameters:
+    PawnPartsParameters:
+      PawnLegs: {fileID: 5555819590630500353, guid: c3526aaf9bd5d7b49b4697f457bab11f, type: 3}
+      PawnBody: {fileID: 7414964413964682557, guid: faac632d85d52384aa327d8efe87e206, type: 3}
+      PawnWeapon: {fileID: 197982928909059421, guid: eab33cc23051ff14297bf2b297548e89, type: 3}
+      LegsSortingOrder: 30
+      BodySortingOrder: 31
+      WeaponSortingOrder: 32
+    MinimalCollectablesActivateAmount:
+      ArmorFragments: 3
+      Apples: 0
+      GoldCoins: 1
+    MaximalCollectablesActivateAmount:
+      ArmorFragments: 6
+      Apples: 0
+      GoldCoins: 4
+  _armorFragmentParameters:
+    InteractableObjectPartsParameters:
+      InteractableObjectBody: {fileID: 901588290729918942, guid: f680874edf33d914aac0e756faed84ee, type: 3}
+      BodySortingOrder: 30
+    SpawnRadius: 3
+    SpawnAnimationDuration: 0.5
+    BeginScale: 0.5
+    EndScale: 1
+  _appleParameters:
+    InteractableObjectPartsParameters:
+      InteractableObjectBody: {fileID: 1486274225146670246, guid: 5c8e40467ce913744b7985ea2fdf7ee9, type: 3}
+      BodySortingOrder: 10
+    SprintRestoreAmount: 20
+    SpawnRadius: 3
+    SpawnAnimationDuration: 0.5
+    BeginScale: 0.5
+    EndScale: 1
+  _goldCoinParameters:
+    InteractableObjectPartsParameters:
+      InteractableObjectBody: {fileID: 1486274225146670246, guid: 4e7de52eb68a8ec4ab15a9cecea589d9, type: 3}
+      BodySortingOrder: 20
+    GoldAmount: 50
+    SpawnRadius: 3
+    SpawnAnimationDuration: 0.5
+    BeginScale: 0.5
+    EndScale: 1
+  _pawnMovementParameters:
+    MoveSpeed: 5
+  _pawnSprintParameters:
+    SprintSpeed: 10
+    SprintMaxAmount: 100
+    SprintAmountIncreaseSpeed: 20
+    SprintAmountDecreaseSpeed: 40
+  _pawnSizeParameters:
+    StartSize: 1
+    ArmoringSize: 0.1
+    ArmoringAnimationDuration: 0.15
+  _enemySpawnerParameters:
+    StartEnemiesAmount: 10
+    MinimalEnemiesAmount: 5
+    MaximalMiddleGameEnemiesSpawnedAmount: 10
+    IncrementArmorFragmentsForSeconds: 6
+    SpawningDisableTimeLeft: 25
+  _armorFragmentsSpawnerParameters:
+    MinimalAmount: 2
+    IncrementValue: 2
+  _applesSpawnerParameters:
+    AlwaysActiveAmount: 17
+    SpawnRadius: 5
+  _bossSpawnerParameters:
+    SpawnTime: 1
+  _cameraSizeCorrectorParameters:
+    StartOrtographicSize: 7.5
+    IncreaseSizeValue: 0.25
+    SizeIncreaseAnimationDuration: 0.15
+  _enemyBehaviorParameters:
+    MinimalTargetPointFindSqrDistance: 100
+    MaximalTargetPointFindSqrDistance: 625
+    MinimalTargetPointApproachSqrDistance: 64
+    TargetPositionFindRadius: 10
+    ArmorFragmentFindSqrRadius: 25
+    AppleFindSqrRadius: 25
+    MinimalSprintPercentsToSprint: 0.15
+    MinimalSprintPercentsToFindApples: 0.75
+    SprintSaveThresholdPercents: 0.1
+  _gameTimerParameters:
+    RoundTime: 91

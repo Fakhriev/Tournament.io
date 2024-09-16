@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b028d3d29d0614896cdf5a7e4db569, type: 3}
+  m_Name: GamePoolsSettingsInstaller
+  m_EditorClassIdentifier: 
+  _playerPoolParameters:
+    InitialSize: 0
+    MaxSize: 0
+    FixedSize: 1
+  _enemyPoolParameters:
+    InitialSize: 10
+    MaxSize: 10
+    FixedSize: 0
+  _bossPoolParameters:
+    InitialSize: 0
+    MaxSize: 0
+    FixedSize: 1
+  _armorFragmentPoolParameters:
+    InitialSize: 10
+    MaxSize: 10
+    FixedSize: 0
+  _applePoolParameters:
+    InitialSize: 20
+    MaxSize: 20
+    FixedSize: 0
+  _goldCoinPoolParameters:
+    InitialSize: 3
+    MaxSize: 3
+    FixedSize: 0
