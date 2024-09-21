@@ -70,6 +70,8 @@ MonoBehaviour:
     SpawnAnimationDuration: 0.5
     BeginScale: 0.5
     EndScale: 1
+  _markerParameters:
+    DirectionDistance: 5
   _pawnMovementParameters:
     MoveSpeed: 5
   _pawnSprintParameters:
@@ -87,14 +89,18 @@ MonoBehaviour:
     MaximalMiddleGameEnemiesSpawnedAmount: 10
     IncrementArmorFragmentsForSeconds: 6
     SpawningDisableTimeLeft: 25
+  _bossSpawnerParameters:
+    SpawnTime: 1
   _armorFragmentsSpawnerParameters:
     MinimalAmount: 2
     IncrementValue: 2
   _applesSpawnerParameters:
     AlwaysActiveAmount: 17
     SpawnRadius: 5
-  _bossSpawnerParameters:
-    SpawnTime: 1
+  _markerSpawnerParameters:
+    EnemiesAmountForMarkers: 10
+    EnemyMarkerColor: {r: 1, g: 0.11022441, b: 0, a: 1}
+    BossMarkerColor: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
   _cameraSizeCorrectorParameters:
     StartOrtographicSize: 7.5
     IncreaseSizeValue: 0.25

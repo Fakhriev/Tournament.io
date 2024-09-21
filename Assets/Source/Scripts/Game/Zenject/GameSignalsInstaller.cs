@@ -10,9 +10,16 @@ namespace Game.Zenject
             SignalBusInstaller.Install(Container);
 
             Container.DeclareSignal<PlayerDieSignal>();
+
+            Container.DeclareSignal<FirstEnemiesSpawnSignal>();
+            Container.DeclareSignal<EnemySpawnSignal>();
             Container.DeclareSignal<EnemyDieSignal>();
+
+            Container.DeclareSignal<BossSpawnSignal>();
             Container.DeclareSignal<BossDieSignal>();
+            
             Container.DeclareSignal<TimerEndSignal>();
+            Container.DeclareSignal<GameEndSignal>();
         }
     }
 }

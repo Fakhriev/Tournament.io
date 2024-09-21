@@ -75,6 +75,8 @@ namespace Game.Gameplay.Spawners
                 return _spawnPoints.GetRandomElement().position + randomSpawnRadius;
         }
 
+        #endregion
+
         public void Restart()
         {
             List<Apple> activeApples = new(_pool.ActiveApples);
@@ -84,8 +86,6 @@ namespace Game.Gameplay.Spawners
 
             SpawnFirstApples();
         }
-
-        #endregion
     }
 
     [Serializable]

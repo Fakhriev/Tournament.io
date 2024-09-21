@@ -32,6 +32,9 @@ namespace Game.Zenject.ScriptableObjectInstallers
         [SerializeField] 
         private GoldCoinParameters _goldCoinParameters;
 
+        [SerializeField] 
+        private MarkerParameters _markerParameters;
+
         [Header("Pawn Parameters")]
         [SerializeField]
         private PawnMovementParameters _pawnMovementParameters;
@@ -49,6 +52,9 @@ namespace Game.Zenject.ScriptableObjectInstallers
         [SerializeField]
         private EnemySpawnerParameters _enemySpawnerParameters;
 
+        [SerializeField]
+        private BossSpawnerParameters _bossSpawnerParameters;
+
         [SerializeField] 
         private ArmorFragmentsSpawnerParameters _armorFragmentsSpawnerParameters;
 
@@ -58,8 +64,8 @@ namespace Game.Zenject.ScriptableObjectInstallers
         [SerializeField] 
         private GoldCoinsSpawnerParameters _goldCoinsSpawnerParameters;
 
-        [SerializeField]
-        private BossSpawnerParameters _bossSpawnerParameters;
+        [SerializeField] 
+        private MarkerSpawnerParameters _markerSpawnerParameters;
 
         [Header("Utilities Parameters")]
         [SerializeField] 
@@ -79,6 +85,7 @@ namespace Game.Zenject.ScriptableObjectInstallers
             Container.BindInstance(_armorFragmentParameters);
             Container.BindInstance(_appleParameters);
             Container.BindInstance(_goldCoinParameters);
+            Container.BindInstance(_markerParameters);
 
             Container.BindInstance(_pawnMovementParameters);
             Container.BindInstance(_pawnSprintParameters);
@@ -89,7 +96,8 @@ namespace Game.Zenject.ScriptableObjectInstallers
             Container.BindInstance(_bossSpawnerParameters);
             Container.BindInstance(_armorFragmentsSpawnerParameters);            
             Container.BindInstance(_applesSpawnerParameters);
-            Container.BindInstance(_goldCoinsSpawnerParameters);  
+            Container.BindInstance(_goldCoinsSpawnerParameters);
+            Container.BindInstance(_markerSpawnerParameters);
 
             Container.BindInstance(_cameraSizeCorrectorParameters);
             Container.BindInstance(_enemyBehaviorParameters);

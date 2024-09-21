@@ -8,6 +8,7 @@ namespace Game.Zenject
         public override void InstallBindings()
         {
             Container.Bind<IInitializable>().FromComponentsInHierarchy().AsSingle().NonLazy();
+            Container.Bind<IPreRestartObject>().FromComponentsInHierarchy().AsCached().NonLazy();
             Container.Bind<IRestartObject>().FromComponentsInHierarchy().AsCached().NonLazy();
         }
     }

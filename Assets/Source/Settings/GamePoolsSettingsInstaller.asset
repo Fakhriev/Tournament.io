@@ -36,3 +36,7 @@ MonoBehaviour:
     InitialSize: 3
     MaxSize: 3
     FixedSize: 0
+  _markerPoolParameters:
+    InitialSize: 11
+    MaxSize: 11
+    FixedSize: 0

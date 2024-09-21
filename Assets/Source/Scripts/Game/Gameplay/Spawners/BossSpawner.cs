@@ -6,6 +6,7 @@ using Zenject;
 using Assets.Source.Scripts.Game.Gameplay.Stage;
 using Game.Gameplay.Utility;
 using Redcode.Extensions;
+using Game.Zenject.Signals;
 
 namespace Game.Gameplay.Spawners
 {
@@ -14,6 +15,7 @@ namespace Game.Gameplay.Spawners
         [SerializeField] private Transform[] _spawnPoints;
 
         private Boss.Pool _pool;
+        private SignalBus _signalBus;
         private GameTimer _gameTimer;
         private BossSpawnerParameters _parameters;
 
@@ -21,9 +23,10 @@ namespace Game.Gameplay.Spawners
         public bool BossSpawned => Boss != null;
 
         [Inject]
-        private void Construct(Boss.Pool pool, GameTimer gameTimer, BossSpawnerParameters parameters)
+        private void Construct(Boss.Pool pool, SignalBus signalBus, GameTimer gameTimer, BossSpawnerParameters parameters)
         {
             _pool = pool;
+            _signalBus = signalBus;
             _gameTimer = gameTimer;
             _parameters = parameters;
         }
@@ -45,6 +48,8 @@ namespace Game.Gameplay.Spawners
             Transform spawnPoint = FindSpawnPoint();
             Boss.SpawnParameters spawnParameters = new(spawnPoint.position);
             Boss = _pool.Spawn(spawnParameters);
+
+            _signalBus.Fire(new BossSpawnSignal(Boss));
         }
 
         private Transform FindSpawnPoint()

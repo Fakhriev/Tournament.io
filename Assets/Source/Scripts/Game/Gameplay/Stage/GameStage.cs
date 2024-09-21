@@ -67,6 +67,7 @@ namespace Assets.Source.Scripts.Game.Gameplay.Stage
         private void GameEnd(GameEndType gameEndType)
         {
             _gameCanvas.ActivateGameEnd(gameEndType);
+            _signalBus.Fire(new GameEndSignal(gameEndType));
         }
     }
 }

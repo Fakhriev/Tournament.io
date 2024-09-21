@@ -15,6 +15,9 @@ namespace Game.Zenject
         [SerializeField]
         private Transform _enemyParent;
 
+        [SerializeField]
+        private Transform _bossParent;
+
         [SerializeField] 
         private Transform _armorFragmentsParent;
 
@@ -24,8 +27,8 @@ namespace Game.Zenject
         [SerializeField] 
         private Transform _goldCoinsParent;
 
-        [SerializeField]
-        private Transform _bossParent;
+        [SerializeField] 
+        private Transform _markersParent;
 
         [Header("Prefabs")]
         [SerializeField]
@@ -33,6 +36,9 @@ namespace Game.Zenject
 
         [SerializeField] 
         private GameObject _interactableObjectPrefab;
+
+        [SerializeField] 
+        private GameObject _markerPrefab;
 
         private PoolParameters _playerPoolParameters;
         private PoolParameters _enemyPoolParameters;
@@ -42,13 +48,16 @@ namespace Game.Zenject
         private PoolParameters _applePoolParameters;
         private PoolParameters _goldCoinPoolParameters;
 
+        private PoolParameters _markerPoolParameters;
+
         [Inject]
         private void Construct([Inject(Id = nameof(Player))] PoolParameters playerPoolParameters,
             [Inject(Id = nameof(Enemy))] PoolParameters enemyPoolParameters,
             [Inject(Id = nameof(Boss))] PoolParameters bossPoolParameters,
             [Inject(Id = nameof(ArmorFragment))] PoolParameters armorFragmentPoolParameters,
             [Inject(Id = nameof(Apple))] PoolParameters applePoolParameters,
-            [Inject(Id = nameof(GoldCoin))] PoolParameters goldCoinPoolParameters)
+            [Inject(Id = nameof(GoldCoin))] PoolParameters goldCoinPoolParameters,
+            [Inject(Id = nameof(Marker))] PoolParameters markerPoolParameters)
         {
             _playerPoolParameters = playerPoolParameters;
             _enemyPoolParameters = enemyPoolParameters;
@@ -58,6 +67,7 @@ namespace Game.Zenject
             _applePoolParameters = applePoolParameters;
             _goldCoinPoolParameters = goldCoinPoolParameters;
 
+            _markerPoolParameters = markerPoolParameters;
         }
 
         public override void InstallBindings()
@@ -76,6 +86,13 @@ namespace Game.Zenject
                 .FromNewComponentOnNewPrefab(_pawnPrefab)
                 .WithGameObjectName(_pawnPrefab.name + $" [{nameof(Enemy)}] [{Constants.IndexPlace}]")
                 .UnderTransform(_enemyParent);
+
+            Container
+                .BindMemoryPool<Boss, Boss.Pool>()
+                .WithFixedSize(_bossPoolParameters.FixedSize)
+                .FromNewComponentOnNewPrefab(_pawnPrefab)
+                .WithGameObjectName(_pawnPrefab.name + $" [{nameof(Boss)}]")
+                .UnderTransform(_bossParent);
 
             Container
                 .BindMemoryPool<ArmorFragment, ArmorFragment.Pool>()
@@ -102,11 +119,12 @@ namespace Game.Zenject
                 .UnderTransform(_goldCoinsParent);
 
             Container
-                .BindMemoryPool<Boss, Boss.Pool>()
-                .WithFixedSize(_bossPoolParameters.FixedSize)
-                .FromNewComponentOnNewPrefab(_pawnPrefab)
-                .WithGameObjectName(_pawnPrefab.name + $" [{nameof(Boss)}]")
-                .UnderTransform(_bossParent);
+                .BindMemoryPool<Marker, Marker.Pool>()
+                .WithInitialSize(_markerPoolParameters.InitialSize)
+                .WithMaxSize(_markerPoolParameters.MaxSize)
+                .FromComponentInNewPrefab(_markerPrefab)
+                .WithGameObjectName(_markerPrefab.name + $" [{Constants.IndexPlace}]")
+                .UnderTransform(_markersParent);
         }
     }
 }

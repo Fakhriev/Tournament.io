@@ -26,6 +26,9 @@ namespace Game.Zenject.ScriptableObjectInstallers
         [SerializeField] 
         private PoolParameters _goldCoinPoolParameters;
 
+        [SerializeField] 
+        private PoolParameters _markerPoolParameters;
+
         public override void InstallBindings()
         {
             Container.BindInstance(_playerPoolParameters).WithId(nameof(Player));
@@ -35,6 +38,8 @@ namespace Game.Zenject.ScriptableObjectInstallers
             Container.BindInstance(_armorFragmentPoolParameters).WithId(nameof(ArmorFragment));
             Container.BindInstance(_applePoolParameters).WithId(nameof(Apple));
             Container.BindInstance(_goldCoinPoolParameters).WithId(nameof(GoldCoin));
+
+            Container.BindInstance(_markerPoolParameters).WithId(nameof(Marker));
         }
     }
 }
