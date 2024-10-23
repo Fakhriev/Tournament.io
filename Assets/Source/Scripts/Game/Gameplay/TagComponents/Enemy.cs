@@ -80,7 +80,7 @@ namespace Game.Gameplay.TagComponents
 
         private void Deactivate(PawnWeapon byWeapon)
         {
-            if (byWeapon.gameObject.layer != Layers.Player)
+            if (byWeapon.gameObject.layer == Layers.Boss)
                 return;
 
             gameObject.name = gameObject.name.Replace(_index.ToString(), Constants.IndexPlace);
