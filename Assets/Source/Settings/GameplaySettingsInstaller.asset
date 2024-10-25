@@ -70,8 +70,6 @@ MonoBehaviour:
     SpawnAnimationDuration: 0.5
     BeginScale: 0.5
     EndScale: 1
-  _markerParameters:
-    DirectionDistance: 5
   _pawnMovementParameters:
     MoveSpeed: 5
   _pawnSprintParameters:
@@ -98,9 +96,10 @@ MonoBehaviour:
     AlwaysActiveAmount: 17
     SpawnRadius: 5
   _markerSpawnerParameters:
-    EnemiesAmountForMarkers: 10
     EnemyMarkerColor: {r: 1, g: 0.11022441, b: 0, a: 1}
     BossMarkerColor: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
+  _powersDistributorParameters:
+    value: 10
   _cameraSizeCorrectorParameters:
     StartOrtographicSize: 7.5
     IncreaseSizeValue: 0.25

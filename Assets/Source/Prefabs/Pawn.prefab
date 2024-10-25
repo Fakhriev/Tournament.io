@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2898246679540181068}
   - component: {fileID: 2253451816033592381}
   - component: {fileID: 8695661273420682636}
+  - component: {fileID: 4330162871530882405}
   - component: {fileID: 3821754367451374047}
   - component: {fileID: 655972184570518963}
   - component: {fileID: 6065910635167184759}
@@ -133,6 +134,18 @@ MonoBehaviour:
     ArmorFragments: 0
     Apples: 0
     GoldCoins: 0
+--- !u!114 &4330162871530882405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904685962207370626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1bff02e1af3fd4282037ed7ee8ef01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3821754367451374047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +246,7 @@ MonoBehaviour:
   - {fileID: 4055190986476053476}
   - {fileID: 8695661273420682636}
   - {fileID: 2898246679540181068}
+  - {fileID: 4330162871530882405}
   _identifier: 
   _useSceneContext: 0
   _context: {fileID: 6065910635167184759}

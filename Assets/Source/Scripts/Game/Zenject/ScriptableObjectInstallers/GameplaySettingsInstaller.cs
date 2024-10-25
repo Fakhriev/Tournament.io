@@ -7,6 +7,7 @@ using Game.Gameplay.Stage;
 using Game.Gameplay.Utility;
 using UnityEngine;
 using Zenject;
+using Game.Gameplay.Powers;
 
 namespace Game.Zenject.ScriptableObjectInstallers
 {
@@ -68,6 +69,9 @@ namespace Game.Zenject.ScriptableObjectInstallers
         private MarkerSpawnerParameters _markerSpawnerParameters;
 
         [Header("Utilities Parameters")]
+        [SerializeField]
+        private PowersDistributorParameters _powersDistributorParameters;
+
         [SerializeField] 
         private CameraSizeCorrectorParameters _cameraSizeCorrectorParameters;
 
@@ -99,6 +103,7 @@ namespace Game.Zenject.ScriptableObjectInstallers
             Container.BindInstance(_goldCoinsSpawnerParameters);
             Container.BindInstance(_markerSpawnerParameters);
 
+            Container.BindInstance(_powersDistributorParameters);
             Container.BindInstance(_cameraSizeCorrectorParameters);
             Container.BindInstance(_enemyBehaviorParameters);
             Container.BindInstance(_gameTimerParameters);
