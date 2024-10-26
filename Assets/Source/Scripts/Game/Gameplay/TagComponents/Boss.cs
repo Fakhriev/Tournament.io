@@ -1,9 +1,9 @@
+using Game.Gameplay.Abstracts;
 using Game.Gameplay.Behavior;
 using Game.Gameplay.Pawn;
 using Game.Gameplay.Pawn.Collliding;
 using Game.Gameplay.Pawn.Movement;
 using Game.Gameplay.Pawn.Movement.Sprint.SprintControll;
-using Game.Gameplay.Pawn.Size;
 using Game.Gameplay.Spawners;
 using Game.Zenject.Signals;
 using System;
@@ -13,7 +13,7 @@ using Zenject;
 
 namespace Game.Gameplay.TagComponents
 {
-    public partial class Boss : MonoBehaviour
+    public partial class Boss : MonoBehaviour, IPawnCharacter
     {
         private Pool _pool;
         private SignalBus _signalBus;
@@ -30,6 +30,8 @@ namespace Game.Gameplay.TagComponents
         private PawnBody _body;
         private EnemyBehavior _enemyBehavior;
 
+        public MonoBehaviour Mono => this;
+
         [Inject]
         private void Construct(Pool pool, DiContainer container, SignalBus signalBus,
             PawnMovement movement, PawnActivator activator, PawnCollectables collectables, BossParameters parameters,
@@ -40,6 +42,7 @@ namespace Game.Gameplay.TagComponents
             _container = container;
 
             _container.BindInstance(parameters.PawnPartsParameters);
+            _container.Bind<IPawnCharacter>().To<Boss>().FromInstance(this);
             _container.Bind<ISprintController>().To<ManualSprintController>().FromNew().AsSingle();
 
             _movement = movement;
@@ -54,7 +57,7 @@ namespace Game.Gameplay.TagComponents
         private void Start()
         {
             _body = _container.Resolve<PawnBody>();
-            _body.OnHitted += Deactivate;
+            _body.OnHitted += OnHit;
 
             _enemyBehavior = _container.InstantiateComponent<EnemyBehavior>(gameObject);
             _container.Resolve<PawnParts>().SetLayers(Layers.Boss);
@@ -82,12 +85,13 @@ namespace Game.Gameplay.TagComponents
                 _body.TakeGoldCoin(null);
         }
 
-        private void Deactivate(PawnWeapon byWeapon)
+        private void OnHit(IHitSource hitSource)
         {
-            if (byWeapon.gameObject.layer != Layers.Player)
+            if (hitSource.Owner is Enemy || hitSource.Owner.Mono.Equals(this))
                 return;
 
             _pool.Despawn(this);
+            _activator.Deactivate();
 
             _goldCoinsSpawner.SpawnCoins(transform.position, _collectables.Parameters);
             _armorFragmentsSpawner.SpawnArmorFragments(transform.position, _collectables.Parameters);

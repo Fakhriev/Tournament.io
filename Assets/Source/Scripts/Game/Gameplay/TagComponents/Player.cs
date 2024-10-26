@@ -1,3 +1,4 @@
+using Game.Gameplay.Abstracts;
 using Game.Gameplay.Pawn;
 using Game.Gameplay.Pawn.Collliding;
 using Game.Gameplay.Pawn.Movement;
@@ -10,12 +11,11 @@ using Zenject;
 
 namespace Game.Gameplay.TagComponents
 {
-    public partial class Player : MonoBehaviour
+    public partial class Player : MonoBehaviour, IPawnCharacter
     {
         private Pool _pool;
         private SignalBus _signalBus;
         private DiContainer _container;
-
         private PawnActivator _activator;
         private PlayerParameters _parameters;
         private PawnCollectables _collectables;
@@ -23,6 +23,8 @@ namespace Game.Gameplay.TagComponents
         private ArmorFragmentsSpawner _armorFragmentsSpawner;
 
         private PawnBody _body;
+
+        public MonoBehaviour Mono => this;
 
         [Inject]
         private void Construct(Pool pool, DiContainer container, SignalBus signalBus,
@@ -34,6 +36,7 @@ namespace Game.Gameplay.TagComponents
             _container = container;
 
             _container.BindInstance(parameters.PawnPartsParameters);
+            _container.Bind<IPawnCharacter>().To<Player>().FromInstance(this);
             _container.Bind<ISprintController>().To<PlayerKeyboardSprintController>().FromNewComponentOn(gameObject).AsSingle();
 
             _activator = acitvator;
@@ -51,7 +54,7 @@ namespace Game.Gameplay.TagComponents
         private void Start()
         {
             _body = _container.Resolve<PawnBody>();
-            _body.OnHitted += Die;
+            _body.OnHitted += OnHit;
 
             _container.Resolve<PawnParts>().SetLayers(Layers.Player);
         }
@@ -62,11 +65,15 @@ namespace Game.Gameplay.TagComponents
             transform.position = spawnParameters.SpawnPosition;
         }
 
-        private void Die(PawnWeapon byWeapon)
+        private void OnHit(IHitSource hitSource)
         {
-            _pool.Despawn(this);
-            _armorFragmentsSpawner.SpawnArmorFragments(transform.position, _collectables.Parameters);
+            if (hitSource.Owner.Mono.Equals(this))
+                return;
 
+            _pool.Despawn(this);
+            _activator.Deactivate();
+
+            _armorFragmentsSpawner.SpawnArmorFragments(transform.position, _collectables.Parameters);
             _signalBus.Fire<PlayerDieSignal>(new(this));
         }
     }

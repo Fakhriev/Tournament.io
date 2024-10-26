@@ -6,15 +6,15 @@ namespace Game.Gameplay.Pawn.Collliding
 {
     public class PawnBody : ObjectPartBase
     {
-        public Action<PawnWeapon> OnHitted;
+        public Action<IHitSource> OnHitted;
 
         public Action<ArmorFragment> OnArmored;
         public Action<Apple> OnAppleEated;
         public Action<GoldCoin> OnGoldCoinTaked;
 
-        public void Hit(PawnWeapon byWeapon)
+        public void Hit(IHitSource hitSource)
         {
-            OnHitted?.Invoke(byWeapon);
+            OnHitted?.Invoke(hitSource);
         }
 
         public void ArmorUp(ArmorFragment armorFragment)

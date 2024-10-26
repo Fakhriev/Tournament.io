@@ -70,6 +70,14 @@ MonoBehaviour:
     SpawnAnimationDuration: 0.5
     BeginScale: 0.5
     EndScale: 1
+  _markerParameters:
+    TestValue: 0
+  _lightningStrikeProjectileParameters:
+    InteractableObjectPartsParameters:
+      InteractableObjectBody: {fileID: 1486274225146670246, guid: e3425e1bf2159ae429857aa246af7eb9, type: 3}
+      BodySortingOrder: 50
+    MoveSpeed: 15
+    LifeTime: 2.5
   _pawnMovementParameters:
     MoveSpeed: 5
   _pawnSprintParameters:
@@ -81,6 +89,9 @@ MonoBehaviour:
     StartSize: 1
     ArmoringSize: 0.1
     ArmoringAnimationDuration: 0.15
+  _lightningStrikeParameters:
+    FireInterval: 5
+    SpawnForwardDelta: 1.75
   _enemySpawnerParameters:
     StartEnemiesAmount: 10
     MinimalEnemiesAmount: 5
@@ -98,8 +109,6 @@ MonoBehaviour:
   _markerSpawnerParameters:
     EnemyMarkerColor: {r: 1, g: 0.11022441, b: 0, a: 1}
     BossMarkerColor: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
-  _powersDistributorParameters:
-    value: 10
   _cameraSizeCorrectorParameters:
     StartOrtographicSize: 7.5
     IncreaseSizeValue: 0.25

@@ -8,13 +8,14 @@ using Game.Gameplay.Utility;
 using UnityEngine;
 using Zenject;
 using Game.Gameplay.Powers;
+using Game.Gameplay.Powers.BehaviorComponents;
 
 namespace Game.Zenject.ScriptableObjectInstallers
 {
     [CreateAssetMenu(fileName = "GameplaySettingsInstaller", menuName = "Installers/Gameplay Settings Installer")]
     public class GameplaySettingsInstaller : ScriptableObjectInstaller<GameplaySettingsInstaller>
     {
-        [Header("Tag Components Parameters")]
+        [Header("Game Tag Components Parameters")]
         [SerializeField]
         private PlayerParameters _playerParameters;
 
@@ -33,8 +34,13 @@ namespace Game.Zenject.ScriptableObjectInstallers
         [SerializeField] 
         private GoldCoinParameters _goldCoinParameters;
 
+        [Space]
         [SerializeField] 
         private MarkerParameters _markerParameters;
+
+        [Space]
+        [SerializeField]
+        private LightningStrikeProjectileParameters _lightningStrikeProjectileParameters;
 
         [Header("Pawn Parameters")]
         [SerializeField]
@@ -45,6 +51,10 @@ namespace Game.Zenject.ScriptableObjectInstallers
 
         [SerializeField] 
         private PawnSizeParameters _pawnSizeParameters;
+
+        [Header("Powers Parameters")]
+        [SerializeField]
+        private LightningStrikeParameters _lightningStrikeParameters;
 
         [Header("Spawners Parameters")]
         [SerializeField] 
@@ -90,10 +100,13 @@ namespace Game.Zenject.ScriptableObjectInstallers
             Container.BindInstance(_appleParameters);
             Container.BindInstance(_goldCoinParameters);
             Container.BindInstance(_markerParameters);
+            Container.BindInstance(_lightningStrikeProjectileParameters);
 
             Container.BindInstance(_pawnMovementParameters);
             Container.BindInstance(_pawnSprintParameters);
             Container.BindInstance(_pawnSizeParameters);
+
+            Container.BindInstance(_lightningStrikeParameters);
 
             Container.BindInstance(_playerSpawnerParameters);
             Container.BindInstance(_enemySpawnerParameters);

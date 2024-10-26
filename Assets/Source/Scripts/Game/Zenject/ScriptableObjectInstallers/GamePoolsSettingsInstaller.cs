@@ -8,6 +8,7 @@ namespace Game.Zenject.ScriptableObjectInstallers
     [CreateAssetMenu(fileName = "GamePoolsSettingsInstaller", menuName = "Installers/Game Pools Settings Installer")]
     public class GamePoolsSettingsInstaller : ScriptableObjectInstaller<GamePoolsSettingsInstaller>
     {
+        [Header("Game Pool Parameters")]
         [SerializeField]
         private PoolParameters _playerPoolParameters;
 
@@ -29,6 +30,9 @@ namespace Game.Zenject.ScriptableObjectInstallers
         [SerializeField] 
         private PoolParameters _markerPoolParameters;
 
+        [SerializeField] 
+        private PoolParameters _lightningStrikeProjectilePoolParameters;
+
         public override void InstallBindings()
         {
             Container.BindInstance(_playerPoolParameters).WithId(nameof(Player));
@@ -40,6 +44,8 @@ namespace Game.Zenject.ScriptableObjectInstallers
             Container.BindInstance(_goldCoinPoolParameters).WithId(nameof(GoldCoin));
 
             Container.BindInstance(_markerPoolParameters).WithId(nameof(Marker));
+
+            Container.BindInstance(_lightningStrikeProjectilePoolParameters).WithId(nameof(LightningStrikeProjectile));
         }
     }
 }

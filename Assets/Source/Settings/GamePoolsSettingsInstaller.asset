@@ -40,3 +40,7 @@ MonoBehaviour:
     InitialSize: 11
     MaxSize: 11
     FixedSize: 0
+  _lightningStrikeProjectilePoolParameters:
+    InitialSize: 1
+    MaxSize: 10
+    FixedSize: 0
