@@ -66,6 +66,9 @@ namespace Game.Gameplay.TagComponents
 
         private void TryToKill(PawnBody body)
         {
+            if (body.Owner.Equals(_owner))
+                return;
+
             body.Hit(this);
             Deactivate();
         }
