@@ -36,7 +36,7 @@ namespace Game.Gameplay.TagComponents
 
         public void Initialize()
         {
-            _interactions.OnInteract += CollectGoldCoin;
+            _interactions.OnInteractToBody += CollectGoldCoin;
         }
 
         public void Activate(SpawnParameters spawnParameters)

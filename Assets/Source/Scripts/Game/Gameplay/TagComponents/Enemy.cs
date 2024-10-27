@@ -32,7 +32,9 @@ namespace Game.Gameplay.TagComponents
 
         private int _index;
 
-        public MonoBehaviour Mono => this;
+        public GameObject PawnGameObject => gameObject;
+
+        public DiContainer PawnContainer => _container;
 
         [Inject]
         private void Construct(Pool pool, DiContainer container, SignalBus signalBus,
@@ -83,7 +85,7 @@ namespace Game.Gameplay.TagComponents
 
         private void OnHit(IHitSource hitSource)
         {
-            if (hitSource.Owner is Boss || hitSource.Owner.Mono.Equals(this))
+            if (hitSource.Owner is Boss || hitSource.Owner.PawnGameObject.Equals(gameObject))
                 return;
 
             gameObject.name = gameObject.name.Replace(_index.ToString(), Constants.IndexPlace);

@@ -7,7 +7,8 @@ namespace Game.Gameplay.InteractableObject
 {
     public class InteractableObjectInteractions : MonoBehaviour
     {
-        public Action<PawnBody> OnInteract;
+        public Action<PawnWeapon> OnInteractToWeapon;
+        public Action<PawnBody> OnInteractToBody;
 
         private DiContainer _container;
         private InteractableObjectBody _body;
@@ -21,12 +22,18 @@ namespace Game.Gameplay.InteractableObject
         private void Start()
         {
             _body = _container.Resolve<InteractableObjectBody>();
-            _body.OnCollide += Interact;
+            _body.OnWeaponCollide += InteractToWeapon;
+            _body.OnBodyCollide += InteractToBody;
         }
 
-        private void Interact(PawnBody pawnBody)
+        private void InteractToWeapon(PawnWeapon pawnWeapon)
         {
-            OnInteract?.Invoke(pawnBody);
+            OnInteractToWeapon?.Invoke(pawnWeapon);
+        }
+
+        private void InteractToBody(PawnBody pawnBody)
+        {
+            OnInteractToBody?.Invoke(pawnBody);
         }
     }
 }

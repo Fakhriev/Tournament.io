@@ -70,14 +70,20 @@ MonoBehaviour:
     SpawnAnimationDuration: 0.5
     BeginScale: 0.5
     EndScale: 1
-  _markerParameters:
-    TestValue: 0
+  _spikyShieldObjectParameters:
+    InteractableObjectPartsParameters:
+      InteractableObjectBody: {fileID: 901588290729918942, guid: 73565022593bde941bdc1cb5301cf826, type: 3}
+      BodySortingOrder: 30
+    LifeTime: 30
+    Scale: 3
   _lightningStrikeProjectileParameters:
     InteractableObjectPartsParameters:
       InteractableObjectBody: {fileID: 1486274225146670246, guid: e3425e1bf2159ae429857aa246af7eb9, type: 3}
       BodySortingOrder: 50
     MoveSpeed: 15
     LifeTime: 2.5
+  _markerParameters:
+    TestValue: 0
   _pawnMovementParameters:
     MoveSpeed: 5
   _pawnSprintParameters:

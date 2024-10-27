@@ -8,7 +8,7 @@ namespace Game.Zenject
 {
     public class GamePoolsInstaller : MonoInstaller
     {
-        [Header("Parents")]
+        [Header("Game Objects Parents")]
         [SerializeField] 
         private Transform _playerParent;
 
@@ -27,13 +27,15 @@ namespace Game.Zenject
         [SerializeField] 
         private Transform _goldCoinsParent;
 
-        [Space]
-        [SerializeField] 
-        private Transform _markersParent;
-
-        [Space]
         [SerializeField]
         private Transform _lightningStrikeProjectilesParent;
+
+        [SerializeField] 
+        private Transform _spikyShieldObjectsParent;
+
+        [Header("UI Objects Parents")]
+        [SerializeField] 
+        private Transform _markersParent;
 
         [Header("Prefabs")]
         [SerializeField]
@@ -53,9 +55,10 @@ namespace Game.Zenject
         private PoolParameters _applePoolParameters;
         private PoolParameters _goldCoinPoolParameters;
 
-        private PoolParameters _markerPoolParameters;
-
+        private PoolParameters _spikyShieldObjectPoolParameters;
         private PoolParameters _lightningStrikeProjectilePoolParameters;
+
+        private PoolParameters _markerPoolParameters;
 
         [Inject]
         private void Construct([Inject(Id = nameof(Player))] PoolParameters playerPoolParameters,
@@ -64,8 +67,9 @@ namespace Game.Zenject
             [Inject(Id = nameof(ArmorFragment))] PoolParameters armorFragmentPoolParameters,
             [Inject(Id = nameof(Apple))] PoolParameters applePoolParameters,
             [Inject(Id = nameof(GoldCoin))] PoolParameters goldCoinPoolParameters,
-            [Inject(Id = nameof(Marker))] PoolParameters markerPoolParameters,
-            [Inject(Id = nameof(LightningStrikeProjectile))] PoolParameters lightningStrikeProjectilePoolParameters)
+            [Inject(Id = nameof(SpikyShieldObject))] PoolParameters spikyShieldObjectPoolParameters,
+            [Inject(Id = nameof(LightningStrikeProjectile))] PoolParameters lightningStrikeProjectilePoolParameters,
+            [Inject(Id = nameof(Marker))] PoolParameters markerPoolParameters)
         {
             _playerPoolParameters = playerPoolParameters;
             _enemyPoolParameters = enemyPoolParameters;
@@ -75,9 +79,10 @@ namespace Game.Zenject
             _applePoolParameters = applePoolParameters;
             _goldCoinPoolParameters = goldCoinPoolParameters;
 
-            _markerPoolParameters = markerPoolParameters;
-
+            _spikyShieldObjectPoolParameters = spikyShieldObjectPoolParameters;
             _lightningStrikeProjectilePoolParameters = lightningStrikeProjectilePoolParameters;
+
+            _markerPoolParameters = markerPoolParameters;
         }
 
         public override void InstallBindings()
@@ -129,20 +134,28 @@ namespace Game.Zenject
                 .UnderTransform(_goldCoinsParent);
 
             Container
+                .BindMemoryPool<SpikyShieldObject, SpikyShieldObject.Pool>()
+                .WithInitialSize(_spikyShieldObjectPoolParameters.InitialSize)
+                .WithMaxSize(_spikyShieldObjectPoolParameters.MaxSize)
+                .FromNewComponentOnNewPrefab(_interactableObjectPrefab)
+                .WithGameObjectName(nameof(SpikyShieldObject))
+                .UnderTransform(_spikyShieldObjectsParent);
+
+            Container
+                .BindMemoryPool<LightningStrikeProjectile, LightningStrikeProjectile.Pool>()
+                .WithInitialSize(_lightningStrikeProjectilePoolParameters.InitialSize)
+                .WithMaxSize(_lightningStrikeProjectilePoolParameters.MaxSize)
+                .FromNewComponentOnNewPrefab(_interactableObjectPrefab)
+                .WithGameObjectName(nameof(LightningStrikeProjectile))
+                .UnderTransform(_lightningStrikeProjectilesParent);
+
+            Container
                 .BindMemoryPool<Marker, Marker.Pool>()
                 .WithInitialSize(_markerPoolParameters.InitialSize)
                 .WithMaxSize(_markerPoolParameters.MaxSize)
                 .FromComponentInNewPrefab(_markerPrefab)
                 .WithGameObjectName(_markerPrefab.name + $" [{Constants.IndexPlace}]")
                 .UnderTransform(_markersParent);
-
-            Container.
-                BindMemoryPool<LightningStrikeProjectile, LightningStrikeProjectile.Pool>()
-                .WithInitialSize(_lightningStrikeProjectilePoolParameters.InitialSize)
-                .WithMaxSize(_lightningStrikeProjectilePoolParameters.MaxSize)
-                .FromNewComponentOnNewPrefab(_interactableObjectPrefab)
-                .WithGameObjectName($"{nameof(LightningStrikeProjectile)}")
-                .UnderTransform(_lightningStrikeProjectilesParent);
         }
     }
 }

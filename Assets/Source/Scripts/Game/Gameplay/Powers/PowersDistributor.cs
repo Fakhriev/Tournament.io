@@ -24,7 +24,7 @@ namespace Game.Gameplay.Powers.BehaviorComponents
         public PowerBase InstantiatePower(DiContainer pawnContainer, IPawnCharacter pawnCharacter)
         {
             _pawnContainer = pawnContainer;
-            _pawnGameObject = pawnCharacter.Mono.gameObject;
+            _pawnGameObject = pawnCharacter.PawnGameObject;
 
             PowerBase power = null;
 
@@ -42,7 +42,7 @@ namespace Game.Gameplay.Powers.BehaviorComponents
 
         private PowerBase InstantiatePlayerPower()
         {
-            return _pawnContainer.InstantiateComponent<LightningStrikePower>(_pawnGameObject);
+            return _pawnContainer.InstantiateComponent<SpikyShieldPower>(_pawnGameObject);
         }
 
         private PowerBase InstantiateEnemyPower()

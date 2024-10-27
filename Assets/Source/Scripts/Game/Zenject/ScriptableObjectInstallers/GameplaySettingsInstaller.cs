@@ -7,7 +7,6 @@ using Game.Gameplay.Stage;
 using Game.Gameplay.Utility;
 using UnityEngine;
 using Zenject;
-using Game.Gameplay.Powers;
 using Game.Gameplay.Powers.BehaviorComponents;
 
 namespace Game.Zenject.ScriptableObjectInstallers
@@ -35,12 +34,15 @@ namespace Game.Zenject.ScriptableObjectInstallers
         private GoldCoinParameters _goldCoinParameters;
 
         [Space]
-        [SerializeField] 
-        private MarkerParameters _markerParameters;
+        [SerializeField]
+        private SpikyShieldObjectParameters _spikyShieldObjectParameters;
 
-        [Space]
         [SerializeField]
         private LightningStrikeProjectileParameters _lightningStrikeProjectileParameters;
+
+        [Header("UI Components Parameters")]
+        [SerializeField]
+        private MarkerParameters _markerParameters;
 
         [Header("Pawn Parameters")]
         [SerializeField]
@@ -53,6 +55,9 @@ namespace Game.Zenject.ScriptableObjectInstallers
         private PawnSizeParameters _pawnSizeParameters;
 
         [Header("Powers Parameters")]
+        [SerializeField]
+        private SpikyShieldPowerParameters _spikyShieldPowerParameters;
+
         [SerializeField]
         private LightningStrikePowerParameters _lightningStrikePowerParameters;
 
@@ -99,13 +104,17 @@ namespace Game.Zenject.ScriptableObjectInstallers
             Container.BindInstance(_armorFragmentParameters);
             Container.BindInstance(_appleParameters);
             Container.BindInstance(_goldCoinParameters);
-            Container.BindInstance(_markerParameters);
+
+            Container.BindInstance(_spikyShieldObjectParameters);
             Container.BindInstance(_lightningStrikeProjectileParameters);
+
+            Container.BindInstance(_markerParameters);
 
             Container.BindInstance(_pawnMovementParameters);
             Container.BindInstance(_pawnSprintParameters);
             Container.BindInstance(_pawnSizeParameters);
 
+            Container.BindInstance(_spikyShieldPowerParameters);
             Container.BindInstance(_lightningStrikePowerParameters);
 
             Container.BindInstance(_playerSpawnerParameters);

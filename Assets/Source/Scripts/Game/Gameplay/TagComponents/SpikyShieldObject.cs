@@ -1,4 +1,4 @@
-﻿using Game.Gameplay.Abstracts;
+using Game.Gameplay.Abstracts;
 using Game.Gameplay.InteractableObject;
 using Game.Gameplay.Pawn.Collliding;
 using System;
@@ -7,23 +7,25 @@ using Zenject;
 
 namespace Game.Gameplay.TagComponents
 {
-    public partial class LightningStrikeProjectile : MonoBehaviour, IHitSource
+    public partial class SpikyShieldObject : MonoBehaviour, IHitSource
     {
         private Pool _pool;
         private DiContainer _container;
 
         private Rigidbody2D _rigidbody2D;
-        private LightningStrikeProjectileParameters _parameters;
+        private SpikyShieldObjectParameters _parameters;
         private InteractableObjectInteractions _interactions;
 
         private IPawnCharacter _owner;
+        private Transform _ownerTransform;
+
         private float _lifeTime;
 
         public IPawnCharacter Owner => _owner;
 
         [Inject]
         private void Construct(Pool pool, DiContainer container,
-            LightningStrikeProjectileParameters parameters, Rigidbody2D rigidbody2D, InteractableObjectInteractions interactions)
+            SpikyShieldObjectParameters parameters, Rigidbody2D rigidbody2D, InteractableObjectInteractions interactions)
         {
             _pool = pool;
             _container = container;
@@ -36,18 +38,19 @@ namespace Game.Gameplay.TagComponents
 
         public void Initialize()
         {
-            _interactions.OnInteractToBody += TryToKill;
+            _interactions.OnInteractToWeapon += CollideWithWeapon;
+            _interactions.OnInteractToBody += CollideWithBody;
         }
 
         public void Activate(SpawnParameters spawnParameters)
         {
             _owner = spawnParameters.Owner;
             MonoBehaviour ownerMonoBehavior = _owner as MonoBehaviour;
-            gameObject.name = $"{nameof(LightningStrikeProjectile)} - {ownerMonoBehavior.name}";
 
-            transform.position = spawnParameters.SpawnPosition;
-            transform.rotation = spawnParameters.SpawnRotation;
+            _ownerTransform = ownerMonoBehavior.transform;
+            gameObject.name = $"{nameof(SpikyShieldObject)} - {ownerMonoBehavior.name}";
 
+            transform.localScale = Vector3.one * _parameters.Scale;
             _lifeTime = _parameters.LifeTime;
         }
 
@@ -59,12 +62,28 @@ namespace Game.Gameplay.TagComponents
                 Deactivate();
         }
 
-        private void FixedUpdate()
+        private void LateUpdate()
         {
-            _rigidbody2D.MovePosition(transform.position + _parameters.MoveSpeed * Time.fixedDeltaTime * transform.up);
+            UpdatePositionAndRotation();
         }
 
-        private void TryToKill(PawnBody body)
+        private void UpdatePositionAndRotation()
+        {
+            transform.position = _ownerTransform.position;
+            transform.rotation = _ownerTransform.rotation;
+        }
+
+        private void CollideWithWeapon(PawnWeapon weapon)
+        {
+            if (weapon.Owner.Equals(_owner))
+                return;
+
+            PawnBody body = weapon.Owner.PawnContainer.Resolve<PawnBody>();
+            body.Hit(this);
+            Deactivate();
+        }
+
+        private void CollideWithBody(PawnBody body)
         {
             if (body.Owner.Equals(_owner))
                 return;
@@ -76,18 +95,18 @@ namespace Game.Gameplay.TagComponents
         private void Deactivate()
         {
             _pool.Despawn(this);
-            gameObject.name = $"{nameof(LightningStrikeProjectile)}";
+            gameObject.name = $"{nameof(SpikyShieldObject)}";
         }
     }
 
     [Serializable]
-    public struct LightningStrikeProjectileParameters
+    public struct SpikyShieldObjectParameters
     {
         [Space]
         public InteractableObjectPartsParameters InteractableObjectPartsParameters;
 
         [Space]
-        public float MoveSpeed;
         public float LifeTime;
+        public float Scale;
     }
 }

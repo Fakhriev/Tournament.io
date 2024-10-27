@@ -27,11 +27,15 @@ namespace Game.Zenject.ScriptableObjectInstallers
         [SerializeField] 
         private PoolParameters _goldCoinPoolParameters;
 
+        [SerializeField]
+        private PoolParameters _spikyShieldPoolParameters;
+
+        [SerializeField]
+        private PoolParameters _lightningStrikeProjectilePoolParameters;
+
+        [Header("UI Pool Parameters")]
         [SerializeField] 
         private PoolParameters _markerPoolParameters;
-
-        [SerializeField] 
-        private PoolParameters _lightningStrikeProjectilePoolParameters;
 
         public override void InstallBindings()
         {
@@ -43,9 +47,10 @@ namespace Game.Zenject.ScriptableObjectInstallers
             Container.BindInstance(_applePoolParameters).WithId(nameof(Apple));
             Container.BindInstance(_goldCoinPoolParameters).WithId(nameof(GoldCoin));
 
-            Container.BindInstance(_markerPoolParameters).WithId(nameof(Marker));
-
+            Container.BindInstance(_spikyShieldPoolParameters).WithId(nameof(SpikyShieldObject));
             Container.BindInstance(_lightningStrikeProjectilePoolParameters).WithId(nameof(LightningStrikeProjectile));
+
+            Container.BindInstance(_markerPoolParameters).WithId(nameof(Marker));
         }
     }
 }

@@ -24,7 +24,9 @@ namespace Game.Gameplay.TagComponents
 
         private PawnBody _body;
 
-        public MonoBehaviour Mono => this;
+        public GameObject PawnGameObject => gameObject;
+
+        public DiContainer PawnContainer => _container;
 
         [Inject]
         private void Construct(Pool pool, DiContainer container, SignalBus signalBus,
@@ -66,7 +68,7 @@ namespace Game.Gameplay.TagComponents
 
         private void OnHit(IHitSource hitSource)
         {
-            if (hitSource.Owner.Mono.Equals(this))
+            if (hitSource.Owner.PawnGameObject.Equals(gameObject))
                 return;
 
             _pool.Despawn(this);
