@@ -3246,7 +3246,6 @@ MonoBehaviour:
   - {fileID: 791238756}
   - {fileID: 1688908406}
   - {fileID: 548994183}
-  - {fileID: 1306762316}
   _identifier: 
   _useSceneContext: 1
   _context: {fileID: 1463146569}
@@ -3900,7 +3899,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1306762315}
-  - component: {fileID: 1306762316}
   m_Layer: 0
   m_Name: LightningStrikeProjectilesParent
   m_TagString: Untagged
@@ -3923,18 +3921,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 24082614}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1306762316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306762314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b071f3faee58b2e41a2cd3e44627bd1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1452479569
 GameObject:
   m_ObjectHideFlags: 0

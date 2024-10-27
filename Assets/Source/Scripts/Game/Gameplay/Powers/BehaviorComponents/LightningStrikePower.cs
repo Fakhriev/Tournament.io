@@ -1,4 +1,3 @@
-using Game.Gameplay.Abstracts;
 using Game.Gameplay.TagComponents;
 using System;
 using UnityEngine;
@@ -6,27 +5,22 @@ using Zenject;
 
 namespace Game.Gameplay.Powers.BehaviorComponents
 {
-    public partial class LightningStrike : MonoBehaviour
+    public class LightningStrikePower : PowerBase
     {
-        private DiContainer _container;
+        private LightningStrikePowerParameters _parameters;
         private LightningStrikeProjectile.Pool _projectilesPool;
-        private LightningStrikeParameters _parameters;
 
-        private IPawnCharacter _character;
         private float _fireInterval;
 
         [Inject]
-        private void Construct(DiContainer container, LightningStrikeProjectile.Pool projectilesPool,
-            LightningStrikeParameters parameters)
+        private void Construct(LightningStrikePowerParameters parameters, LightningStrikeProjectile.Pool projectilesPool)
         {
-            _container = container;
-            _projectilesPool = projectilesPool;
             _parameters = parameters;
+            _projectilesPool = projectilesPool;
         }
 
         private void Start()
         {
-            _character = _container.Resolve<IPawnCharacter>();
             UpdateFireInterval();
         }
 
@@ -56,7 +50,7 @@ namespace Game.Gameplay.Powers.BehaviorComponents
     }
 
     [Serializable]
-    public struct LightningStrikeParameters
+    public struct LightningStrikePowerParameters
     {
         public float FireInterval;
         public float SpawnForwardDelta;

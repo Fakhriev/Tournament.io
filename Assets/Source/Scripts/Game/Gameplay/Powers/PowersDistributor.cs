@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using Zenject;
 
-namespace Game.Gameplay.Powers
+namespace Game.Gameplay.Powers.BehaviorComponents
 {
     public class PowersDistributor : MonoBehaviour
     {
@@ -12,7 +12,7 @@ namespace Game.Gameplay.Powers
         private PowersDistributorParameters _parameters;
 
         private DiContainer _pawnContainer;
-        private IPawnCharacter _pawnCharacter;
+        private GameObject _pawnGameObject;
 
         [Inject]
         private void Construct(DiContainer container, PowersDistributorParameters parameters)
@@ -21,38 +21,38 @@ namespace Game.Gameplay.Powers
             _parameters = parameters;
         }
 
-        public PowerBase GetPower(DiContainer pawnContainer, IPawnCharacter pawnCharacter)
+        public PowerBase InstantiatePower(DiContainer pawnContainer, IPawnCharacter pawnCharacter)
         {
             _pawnContainer = pawnContainer;
-            _pawnCharacter = pawnCharacter;
+            _pawnGameObject = pawnCharacter.Mono.gameObject;
 
-            PowerBase power = new ExceptionPower(_container, _pawnCharacter);
+            PowerBase power = null;
 
-            if (_pawnCharacter is Player)
-                power = GetPlayerPower();
+            if (pawnCharacter is Player)
+                power = InstantiatePlayerPower();
 
-            if (_pawnCharacter is Enemy)
-                power = GetEnemyPower();
+            if (pawnCharacter is Enemy)
+                power = InstantiateEnemyPower();
 
-            if (_pawnCharacter is Boss)
-                power = GetBossPower();
+            if (pawnCharacter is Boss)
+                power = InstantiateBossPower();
 
             return power;
         }
 
-        private PowerBase GetPlayerPower()
+        private PowerBase InstantiatePlayerPower()
         {
-            return _container.Instantiate<LightningStrikePower>(new object[] { _pawnContainer, _pawnCharacter});
+            return _pawnContainer.InstantiateComponent<LightningStrikePower>(_pawnGameObject);
         }
 
-        private PowerBase GetEnemyPower()
+        private PowerBase InstantiateEnemyPower()
         {
-            return _container.Instantiate<EmptyPower>(new object[] { _pawnContainer, _pawnCharacter });
+            return _pawnContainer.InstantiateComponent<EmptyPower>(_pawnGameObject);
         }
 
-        private PowerBase GetBossPower()
+        private PowerBase InstantiateBossPower()
         {
-            return _container.Instantiate<EmptyPower>(new object[] { _pawnContainer, _pawnCharacter });
+            return _pawnContainer.InstantiateComponent<EmptyPower>(_pawnGameObject);
         }
     }
 

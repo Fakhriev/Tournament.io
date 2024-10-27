@@ -89,7 +89,7 @@ MonoBehaviour:
     StartSize: 1
     ArmoringSize: 0.1
     ArmoringAnimationDuration: 0.15
-  _lightningStrikeParameters:
+  _lightningStrikePowerParameters:
     FireInterval: 5
     SpawnForwardDelta: 1.75
   _enemySpawnerParameters:

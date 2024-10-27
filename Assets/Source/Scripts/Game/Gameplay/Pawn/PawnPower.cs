@@ -1,5 +1,6 @@
 using Game.Gameplay.Abstracts;
 using Game.Gameplay.Powers;
+using Game.Gameplay.Powers.BehaviorComponents;
 using UnityEngine;
 using Zenject;
 
@@ -23,8 +24,7 @@ namespace Game.Gameplay.Pawn
         public void Activate()
         {
             _character ??= _container.Resolve<IPawnCharacter>();
-            _power = _powersDistributor.GetPower(_container, _character);
-            _power.Activate();
+            _power = _powersDistributor.InstantiatePower(_container, _character);
         }
 
         public void Deactivate()

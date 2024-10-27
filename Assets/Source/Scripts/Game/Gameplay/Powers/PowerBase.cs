@@ -4,22 +4,21 @@ using Zenject;
 
 namespace Game.Gameplay.Powers
 {
-    public abstract class PowerBase
+    public abstract class PowerBase : MonoBehaviour
     {
         protected DiContainer _container;
-        protected GameObject _ownerGameObject;
-        protected IPawnCharacter _ownerCharacter;
+        protected IPawnCharacter _character;
 
         [Inject]
-        public PowerBase(DiContainer container, IPawnCharacter pawnCharacter)
+        private void Construct(DiContainer container, IPawnCharacter pawnCharacter)
         {
             _container = container;
-            _ownerCharacter = pawnCharacter;
-            _ownerGameObject = pawnCharacter.Mono.gameObject;
+            _character = pawnCharacter;
         }
 
-        public abstract void Activate();
-
-        public abstract void Deactivate();
+        public void Deactivate()
+        {
+            Destroy(this);
+        }
     }
 }

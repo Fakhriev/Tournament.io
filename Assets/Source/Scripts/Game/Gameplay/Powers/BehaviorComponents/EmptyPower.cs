@@ -1,8 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game.Gameplay.Powers.BehaviorComponents
 {
-    public class SpikyShield : MonoBehaviour
+    public class EmptyPower : PowerBase
     {
 
     }
