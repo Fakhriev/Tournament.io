@@ -55,7 +55,6 @@ namespace Game.Gameplay.TagComponents
         {
             _body = _container.Resolve<PawnBody>();
             _body.OnHitted += OnHit;
-
             _container.Resolve<PawnParts>().SetLayers(Layers.Player);
         }
 

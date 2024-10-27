@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+﻿using Game.Gameplay.Abstracts;
 using Zenject;
 
 namespace Game.Gameplay.Powers
 {
     public class EmptyPower : PowerBase
     {
-        public EmptyPower(DiContainer container, GameObject pawnGameObject) : base(container, pawnGameObject)
+        public EmptyPower(DiContainer container, IPawnCharacter pawnCharacter) : base(container, pawnCharacter)
         {
 
         }

@@ -1,3 +1,4 @@
+using Game.Gameplay.Abstracts;
 using Game.Gameplay.Powers;
 using UnityEngine;
 using Zenject;
@@ -7,6 +8,7 @@ namespace Game.Gameplay.Pawn
     public class PawnPower : MonoBehaviour, IPawnActivateObject, IPawnDeactivateObject
     {
         private DiContainer _container;
+        private IPawnCharacter _character;
         private PowersDistributor _powersDistributor;
 
         private PowerBase _power;
@@ -20,7 +22,8 @@ namespace Game.Gameplay.Pawn
 
         public void Activate()
         {
-            _power = _powersDistributor.GetPower(_container, gameObject);
+            _character ??= _container.Resolve<IPawnCharacter>();
+            _power = _powersDistributor.GetPower(_container, _character);
             _power.Activate();
         }
 

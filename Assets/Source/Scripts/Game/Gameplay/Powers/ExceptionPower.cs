@@ -1,12 +1,12 @@
+using Game.Gameplay.Abstracts;
 using System;
-using UnityEngine;
 using Zenject;
 
 namespace Game.Gameplay.Powers
 {
     public class ExceptionPower : PowerBase
     {
-        public ExceptionPower(DiContainer container, GameObject pawnGameObject) : base(container, pawnGameObject)
+        public ExceptionPower(DiContainer container, IPawnCharacter pawnCharacter) : base(container, pawnCharacter)
         {
 
         }
