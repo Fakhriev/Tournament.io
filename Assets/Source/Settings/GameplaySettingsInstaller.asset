@@ -75,7 +75,8 @@ MonoBehaviour:
       InteractableObjectBody: {fileID: 901588290729918942, guid: 73565022593bde941bdc1cb5301cf826, type: 3}
       BodySortingOrder: 30
     LifeTime: 30
-    Scale: 3
+    IncreaseSizeMultiplier: 3
+    IncreaseSizeAnimationDuration: 0.15
   _lightningStrikeProjectileParameters:
     InteractableObjectPartsParameters:
       InteractableObjectBody: {fileID: 1486274225146670246, guid: e3425e1bf2159ae429857aa246af7eb9, type: 3}
@@ -93,8 +94,8 @@ MonoBehaviour:
     SprintAmountDecreaseSpeed: 40
   _pawnSizeParameters:
     StartSize: 1
-    ArmoringSize: 0.1
-    ArmoringAnimationDuration: 0.15
+    IncreaseSizeByArmor: 0.1
+    IncreaseSizeAnimationDuration: 0.15
   _lightningStrikePowerParameters:
     FireInterval: 5
     SpawnForwardDelta: 1.75

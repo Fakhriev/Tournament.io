@@ -1,6 +1,8 @@
+using DG.Tweening;
 using Game.Gameplay.Abstracts;
 using Game.Gameplay.InteractableObject;
 using Game.Gameplay.Pawn.Collliding;
+using Game.Gameplay.Pawn.Size;
 using System;
 using UnityEngine;
 using Zenject;
@@ -18,6 +20,8 @@ namespace Game.Gameplay.TagComponents
 
         private IPawnCharacter _owner;
         private Transform _ownerTransform;
+
+        private Tween _sizeIncrease;
 
         private float _lifeTime;
 
@@ -50,8 +54,17 @@ namespace Game.Gameplay.TagComponents
             _ownerTransform = ownerMonoBehavior.transform;
             gameObject.name = $"{nameof(SpikyShieldObject)} - {ownerMonoBehavior.name}";
 
-            transform.localScale = Vector3.one * _parameters.Scale;
+            PawnSize pawnSize = _owner.PawnContainer.Resolve<PawnSize>();
+            pawnSize.OnSizeIncrease += UpdateSize;
+
             _lifeTime = _parameters.LifeTime;
+            transform.localScale = Vector3.one * _parameters.IncreaseSizeMultiplier;
+        }
+
+        private void UpdateSize(float size)
+        {
+            _sizeIncrease?.Complete();
+            _sizeIncrease = transform.DOScale(size * _parameters.IncreaseSizeMultiplier, _parameters.IncreaseSizeAnimationDuration).OnComplete(() => _sizeIncrease = null);
         }
 
         private void Update()
@@ -107,6 +120,9 @@ namespace Game.Gameplay.TagComponents
 
         [Space]
         public float LifeTime;
-        public float Scale;
+
+        [Space]
+        public float IncreaseSizeMultiplier;
+        public float IncreaseSizeAnimationDuration;
     }
 }
