@@ -57,8 +57,10 @@ namespace Game.Gameplay.TagComponents
             PawnSize pawnSize = _owner.PawnContainer.Resolve<PawnSize>();
             pawnSize.OnSizeIncrease += UpdateSize;
 
+            Vector3 startSize = new Vector3(pawnSize.Value, pawnSize.Value, 1f);
+            transform.localScale = startSize * _parameters.IncreaseSizeMultiplier;
+
             _lifeTime = _parameters.LifeTime;
-            transform.localScale = Vector3.one * _parameters.IncreaseSizeMultiplier;
         }
 
         private void UpdateSize(float size)

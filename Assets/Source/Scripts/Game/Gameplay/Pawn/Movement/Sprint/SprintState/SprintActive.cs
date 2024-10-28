@@ -17,7 +17,7 @@ namespace Game.Gameplay.Pawn.Movement
                 _movement = movement;
                 _parameters = parameters;
 
-                _movement.SetNewMoveSpeed(_parameters.SprintSpeed);
+                _sprint.SetSprintSpeedToMovement();
             }
 
             public ISprintState Execute()

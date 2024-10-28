@@ -42,7 +42,7 @@ namespace Game.Gameplay.Powers.BehaviorComponents
 
         private PowerBase InstantiatePlayerPower()
         {
-            return _pawnContainer.InstantiateComponent<SpikyShieldPower>(_pawnGameObject);
+            return _pawnContainer.InstantiateComponent<SprintIncreaseBySizePower>(_pawnGameObject);
         }
 
         private PowerBase InstantiateEnemyPower()

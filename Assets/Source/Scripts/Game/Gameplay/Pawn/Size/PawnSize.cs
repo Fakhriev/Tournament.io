@@ -19,6 +19,8 @@ namespace Game.Gameplay.Pawn.Size
 
         public Action<float> OnSizeIncrease;
 
+        public float Value => _size;
+
         [Inject]
         private void Construct(DiContainer container, PawnSizeParameters parameters)
         {

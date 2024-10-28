@@ -61,6 +61,9 @@ namespace Game.Zenject.ScriptableObjectInstallers
         [SerializeField]
         private LightningStrikePowerParameters _lightningStrikePowerParameters;
 
+        [SerializeField]
+        private SprintIncreaseBySizePowerParameters _sprintIncreaseBySizePowerParameters;
+
         [Header("Spawners Parameters")]
         [SerializeField] 
         private PlayerSpawnerParameters _playerSpawnerParameters;
@@ -116,6 +119,7 @@ namespace Game.Zenject.ScriptableObjectInstallers
 
             Container.BindInstance(_spikyShieldPowerParameters);
             Container.BindInstance(_lightningStrikePowerParameters);
+            Container.BindInstance(_sprintIncreaseBySizePowerParameters);
 
             Container.BindInstance(_playerSpawnerParameters);
             Container.BindInstance(_enemySpawnerParameters);

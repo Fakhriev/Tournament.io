@@ -99,6 +99,8 @@ MonoBehaviour:
   _lightningStrikePowerParameters:
     FireInterval: 5
     SpawnForwardDelta: 1.75
+  _sprintIncreaseBySizePowerParameters:
+    SprintIncreaseFactor: 0.5
   _enemySpawnerParameters:
     StartEnemiesAmount: 10
     MinimalEnemiesAmount: 5

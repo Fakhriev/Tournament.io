@@ -14,6 +14,8 @@ namespace Game.Gameplay.Pawn.Movement
         private PawnSprintParameters _parameters;
 
         private PawnBody _body;
+
+        private float _sprintSpeed;
         private float _sprintAmount;
 
         private ISprintState _sprintState;
@@ -55,7 +57,9 @@ namespace Game.Gameplay.Pawn.Movement
 
         public void Activate()
         {
+            _sprintSpeed = _parameters.SprintSpeed;
             _sprintAmount = _parameters.SprintMaxAmount;
+
             _sprintState = new SprintInactive(this, _movement, ref _parameters);
             _movement.SetOriginalMoveSpeed();
         }
@@ -69,14 +73,28 @@ namespace Game.Gameplay.Pawn.Movement
         {
             _sprintAmount += apple.RestoreAmount;
         }
+
+        private void SetSprintSpeedToMovement()
+        {
+            _movement.SetNewMoveSpeed(_sprintSpeed);
+        }
+
+        public void SetNewSprintSpeed(float value)
+        {
+            _sprintSpeed = value;
+
+            if (IsActive)
+                SetSprintSpeedToMovement();
+        }
     }
 
     [Serializable]
     public struct PawnSprintParameters
     {
         public float SprintSpeed;
-
         public float SprintMaxAmount;
+
+        [Space]
         public float SprintAmountIncreaseSpeed;
         public float SprintAmountDecreaseSpeed;
     }
