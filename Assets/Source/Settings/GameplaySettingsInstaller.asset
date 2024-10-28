@@ -65,7 +65,6 @@ MonoBehaviour:
     InteractableObjectPartsParameters:
       InteractableObjectBody: {fileID: 1486274225146670246, guid: 4e7de52eb68a8ec4ab15a9cecea589d9, type: 3}
       BodySortingOrder: 20
-    GoldAmount: 50
     SpawnRadius: 3
     SpawnAnimationDuration: 0.5
     BeginScale: 0.5
@@ -96,6 +95,8 @@ MonoBehaviour:
     StartSize: 1
     IncreaseSizeByArmor: 0.1
     IncreaseSizeAnimationDuration: 0.15
+  _goldMultiplierPowerParameters:
+    MultiplyValue: 2
   _lightningStrikePowerParameters:
     FireInterval: 5
     SpawnForwardDelta: 1.75

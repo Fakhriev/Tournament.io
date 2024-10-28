@@ -25,6 +25,7 @@ namespace Game.Gameplay.Powers.BehaviorComponents
         {
             _pawnSize = _container.Resolve<PawnSize>();
             _pawnSize.OnSizeIncrease += OnPawnSizeIncrease;
+
             _actualSize = _pawnSize.Value;
 
             _pawnSprint = _container.Resolve<PawnSprint>();
@@ -38,6 +39,11 @@ namespace Game.Gameplay.Powers.BehaviorComponents
 
             _actualSprintSpeed += _actualSprintSpeed * (sizeFactor - 1f) * _parameters.SprintIncreaseIncreaseFactor;
             _pawnSprint.SetNewSprintSpeed(_actualSprintSpeed);
+        }
+
+        private void OnDestroy()
+        {
+            _pawnSize.OnSizeIncrease -= OnPawnSizeIncrease;
         }
     }
 

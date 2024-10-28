@@ -10,7 +10,9 @@ namespace Game.Gameplay.Powers.BehaviorComponents
     public class SprintRestoreByArmorFragmentsPower : PowerBase
     {
         private SprintRestoreByArmorFragmentsPowerParameters _parameters;
+
         private PawnSprint _pawnSprint;
+        private PawnBody _pawnBody;
 
         [Inject]
         private void Construct(SprintRestoreByArmorFragmentsPowerParameters parameters)
@@ -20,15 +22,20 @@ namespace Game.Gameplay.Powers.BehaviorComponents
 
         private void Start()
         {
-            _pawnSprint = _container.Resolve<PawnSprint>();
+            _pawnBody = _container.Resolve<PawnBody>();
+            _pawnBody.OnArmored += OnArmored;
 
-            PawnBody pawnBody = _container.Resolve<PawnBody>();
-            pawnBody.OnArmored += OnArmored;
+            _pawnSprint = _container.Resolve<PawnSprint>();
         }
 
         private void OnArmored(ArmorFragment armorFragment)
         {
             _pawnSprint.IncreaseSprintAmount(_parameters.SprintRestoreAmount);
+        }
+
+        private void OnDestroy()
+        {
+            _pawnBody.OnArmored -= OnArmored;
         }
     }
 

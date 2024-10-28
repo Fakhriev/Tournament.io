@@ -77,6 +77,12 @@ namespace Game.Gameplay.TagComponents
             _armorFragmentsSpawner.SpawnArmorFragments(transform.position, _collectables.Parameters);
             _signalBus.Fire<PlayerDieSignal>(new(this));
         }
+
+        [ContextMenu("Hit By Boss")]
+        private void HitByBoss()
+        {
+            OnHit(FindObjectOfType<Boss>(true).gameObject.GetComponentInChildren<PawnWeapon>(true));
+        }
     }
 
     [Serializable]
