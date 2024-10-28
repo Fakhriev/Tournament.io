@@ -1,14 +1,13 @@
 using Game.Gameplay.Pawn.Movement;
 using Game.Gameplay.Pawn.Size;
 using System;
-using UnityEngine;
 using Zenject;
 
 namespace Game.Gameplay.Powers.BehaviorComponents
 {
-    public class SprintIncreaseBySizePower : PowerBase
+    public class SprintSpeedIncreaseBySizePower : PowerBase
     {
-        private SprintIncreaseBySizePowerParameters _parameters;
+        private SprintSpeedIncreaseBySizePowerParameters _parameters;
 
         private PawnSize _pawnSize;
         private float _actualSize;
@@ -17,7 +16,7 @@ namespace Game.Gameplay.Powers.BehaviorComponents
         private float _actualSprintSpeed;
 
         [Inject]
-        private void Construct(SprintIncreaseBySizePowerParameters parameters)
+        private void Construct(SprintSpeedIncreaseBySizePowerParameters parameters)
         {
             _parameters = parameters;
         }
@@ -37,14 +36,14 @@ namespace Game.Gameplay.Powers.BehaviorComponents
             float sizeFactor = increasedSize / _actualSize;
             _actualSize = increasedSize;
 
-            _actualSprintSpeed += _actualSprintSpeed * (sizeFactor - 1f) * _parameters.SprintIncreaseFactor;
+            _actualSprintSpeed += _actualSprintSpeed * (sizeFactor - 1f) * _parameters.SprintIncreaseIncreaseFactor;
             _pawnSprint.SetNewSprintSpeed(_actualSprintSpeed);
         }
     }
 
     [Serializable]
-    public struct SprintIncreaseBySizePowerParameters
+    public struct SprintSpeedIncreaseBySizePowerParameters
     {
-        public float SprintIncreaseFactor;
+        public float SprintIncreaseIncreaseFactor;
     }
 }

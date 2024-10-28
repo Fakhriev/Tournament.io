@@ -62,7 +62,7 @@ namespace Game.Zenject.ScriptableObjectInstallers
         private LightningStrikePowerParameters _lightningStrikePowerParameters;
 
         [SerializeField]
-        private SprintIncreaseBySizePowerParameters _sprintIncreaseBySizePowerParameters;
+        private SprintSpeedIncreaseBySizePowerParameters _sprintIncreaseBySizePowerParameters;
 
         [Header("Spawners Parameters")]
         [SerializeField] 
