@@ -101,6 +101,8 @@ MonoBehaviour:
     SpawnForwardDelta: 1.75
   _sprintIncreaseBySizePowerParameters:
     SprintIncreaseIncreaseFactor: 0.5
+  _sprintRestoreByArmorFragmentsPowerParameters:
+    SprintRestoreAmount: 15
   _enemySpawnerParameters:
     StartEnemiesAmount: 10
     MinimalEnemiesAmount: 5

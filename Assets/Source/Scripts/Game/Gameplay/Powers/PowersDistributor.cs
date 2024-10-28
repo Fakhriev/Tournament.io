@@ -42,7 +42,7 @@ namespace Game.Gameplay.Powers.BehaviorComponents
 
         private PowerBase InstantiatePlayerPower()
         {
-            return _pawnContainer.InstantiateComponent<SprintSpeedIncreaseBySizePower>(_pawnGameObject);
+            return _pawnContainer.InstantiateComponent<SprintRestoreByArmorFragmentsPower>(_pawnGameObject);
         }
 
         private PowerBase InstantiateEnemyPower()

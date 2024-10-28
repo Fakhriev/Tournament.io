@@ -44,17 +44,6 @@ namespace Game.Gameplay.Pawn.Movement
             _sprintState = new SprintInactive(this, _movement, ref _parameters);
         }
 
-        private void SetSprintState(bool activeState)
-        {
-            if (activeState == IsActive)
-                return;
-
-            if (activeState)
-                _sprintState = new SprintActive(this, _movement, ref _parameters);
-            else
-                _sprintState = new SprintInactive(this, _movement, ref _parameters);
-        }
-
         public void Activate()
         {
             _sprintSpeed = _parameters.SprintSpeed;
@@ -71,12 +60,24 @@ namespace Game.Gameplay.Pawn.Movement
 
         private void RestoreSprintAmount(Apple apple)
         {
-            _sprintAmount += apple.RestoreAmount;
+            IncreaseSprintAmount(apple.RestoreAmount);
         }
 
-        private void SetSprintSpeedToMovement()
+        private void SetSprintState(bool activeState)
         {
-            _movement.SetNewMoveSpeed(_sprintSpeed);
+            if (activeState == IsActive)
+                return;
+
+            if (activeState)
+                _sprintState = new SprintActive(this, _movement, ref _parameters);
+            else
+                _sprintState = new SprintInactive(this, _movement, ref _parameters);
+        }
+
+        public void IncreaseSprintAmount(float value)
+        {
+            _sprintAmount += value;
+            _sprintAmount = Mathf.Clamp(_sprintAmount, 0f, _parameters.SprintMaxAmount);
         }
 
         public void SetNewSprintSpeed(float value)
@@ -85,6 +86,11 @@ namespace Game.Gameplay.Pawn.Movement
 
             if (IsActive)
                 SetSprintSpeedToMovement();
+        }
+
+        private void SetSprintSpeedToMovement()
+        {
+            _movement.SetNewMoveSpeed(_sprintSpeed);
         }
     }
 

@@ -21,9 +21,7 @@ namespace Game.Gameplay.Pawn.Movement
 
             public ISprintState Execute()
             {
-                _sprint._sprintAmount += _parameters.SprintAmountIncreaseSpeed * Time.deltaTime;
-                _sprint._sprintAmount = Mathf.Clamp(_sprint._sprintAmount, 0f, _parameters.SprintMaxAmount);
-
+                _sprint.IncreaseSprintAmount(_parameters.SprintAmountIncreaseSpeed * Time.deltaTime);
                 return this;
             }
         }
