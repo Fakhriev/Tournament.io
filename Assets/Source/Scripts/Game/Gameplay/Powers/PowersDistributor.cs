@@ -42,7 +42,7 @@ namespace Game.Gameplay.Powers.BehaviorComponents
 
         private PowerBase InstantiatePlayerPower()
         {
-            return _pawnContainer.InstantiateComponent<GoldMultiplierPower>(_pawnGameObject);
+            return _pawnContainer.InstantiateComponent<RandomPower>(_pawnGameObject);
         }
 
         private PowerBase InstantiateEnemyPower()

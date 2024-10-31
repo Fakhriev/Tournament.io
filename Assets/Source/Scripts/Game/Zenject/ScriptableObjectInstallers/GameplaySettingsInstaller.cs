@@ -56,6 +56,9 @@ namespace Game.Zenject.ScriptableObjectInstallers
 
         [Header("Powers Parameters")]
         [SerializeField]
+        private RandomPowerParameters _randomPowerParameters;
+
+        [SerializeField]
         private SpikyShieldPowerParameters _spikyShieldPowerParameters;
 
         [SerializeField]
@@ -123,6 +126,7 @@ namespace Game.Zenject.ScriptableObjectInstallers
             Container.BindInstance(_pawnSprintParameters);
             Container.BindInstance(_pawnSizeParameters);
 
+            Container.BindInstance(_randomPowerParameters);
             Container.BindInstance(_spikyShieldPowerParameters);
             Container.BindInstance(_goldMultiplierPowerParameters);
             Container.BindInstance(_lightningStrikePowerParameters);

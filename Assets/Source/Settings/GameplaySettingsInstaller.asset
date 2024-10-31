@@ -95,6 +95,10 @@ MonoBehaviour:
     StartSize: 1
     IncreaseSizeByArmor: 0.1
     IncreaseSizeAnimationDuration: 0.15
+  _randomPowerParameters:
+    BannedPowers:
+    - Game.Gameplay.Powers.BehaviorComponents.EmptyPower
+    - Game.Gameplay.Powers.BehaviorComponents.RandomPower
   _goldMultiplierPowerParameters:
     MultiplyValue: 2
   _lightningStrikePowerParameters:
