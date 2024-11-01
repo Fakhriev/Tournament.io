@@ -9,28 +9,27 @@ namespace Game.Gameplay.TagComponents
         {
             public List<Marker> ActiveMarkers = new();
 
-            protected override void OnCreated(Marker item)
+            protected override void OnCreated(Marker marker)
             {
-                base.OnCreated(item);
-                item.Initialize();
+                base.OnCreated(marker);
+                marker.Initialize();
             }
 
-            protected override void OnSpawned(Marker item)
+            protected override void OnSpawned(Marker marker)
             {
-                base.OnSpawned(item);
-                ActiveMarkers.Add(item);
+                base.OnSpawned(marker);
+                ActiveMarkers.Add(marker);
             }
 
-            protected override void OnDespawned(Marker item)
+            protected override void OnDespawned(Marker marker)
             {
-                base.OnDespawned(item);
-                ActiveMarkers.Remove(item);
+                base.OnDespawned(marker);
+                ActiveMarkers.Remove(marker);
             }
 
-            protected override void Reinitialize(SpawnParameters p1, Marker item)
+            protected override void Reinitialize(SpawnParameters spawnParameters, Marker marker)
             {
-                base.Reinitialize(p1, item);
-                item.Activate(p1);
+                marker.Activate(spawnParameters);
             }
         }
     }

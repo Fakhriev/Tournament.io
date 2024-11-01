@@ -36,7 +36,7 @@ namespace Game.Gameplay.TagComponents
 
         public void Initialize()
         {
-            _interactions.OnInteract += CollectGoldCoin;
+            _interactions.OnInteractToBody += CollectGoldCoin;
         }
 
         public void Activate(SpawnParameters spawnParameters)
@@ -74,12 +74,10 @@ namespace Game.Gameplay.TagComponents
         public InteractableObjectPartsParameters InteractableObjectPartsParameters;
 
         [Space]
-        public int GoldAmount;
-
-        [Space]
         public float SpawnRadius;
         public float SpawnAnimationDuration;
 
+        [Space]
         public float BeginScale;
         public float EndScale;
     }

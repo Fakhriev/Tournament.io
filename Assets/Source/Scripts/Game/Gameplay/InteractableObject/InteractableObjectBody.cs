@@ -7,13 +7,18 @@ namespace Game.Gameplay.InteractableObject
 {
     public class InteractableObjectBody : ObjectPartBase
     {
-        public Action<PawnBody> OnCollide;
+        public Action<PawnBody> OnBodyCollide;
+        public Action<PawnWeapon> OnWeaponCollide;
 
         public override void TriggerEnter2D(Collider2D collision)
         {
-            if (collision.TryGetComponent<ObjectPartCollider>(out var partCollider) && partCollider.Base is PawnBody pawnBody)
+            if (collision.TryGetComponent<ObjectPartCollider>(out var partCollider))
             {
-                OnCollide?.Invoke(pawnBody);
+                if(partCollider.Base is PawnBody pawnBody)
+                    OnBodyCollide?.Invoke(pawnBody);
+
+                if (partCollider.Base is PawnWeapon pawnWeapon)
+                    OnWeaponCollide?.Invoke(pawnWeapon);
             }
         }
     }

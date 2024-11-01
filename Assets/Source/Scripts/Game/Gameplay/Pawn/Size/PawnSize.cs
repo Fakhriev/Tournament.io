@@ -15,9 +15,11 @@ namespace Game.Gameplay.Pawn.Size
         private PawnBody _body;
 
         private float _size;
-        private Tween _scaleIncrease;
+        private Tween _sizeIncrease;
 
         public Action<float> OnSizeIncrease;
+
+        public float Value => _size;
 
         [Inject]
         private void Construct(DiContainer container, PawnSizeParameters parameters)
@@ -40,13 +42,11 @@ namespace Game.Gameplay.Pawn.Size
 
         private void IncreaseSize(ArmorFragment armorFragment)
         {
-            if(_scaleIncrease != null)
-            {
-                _scaleIncrease.Complete();
-            }
+            _sizeIncrease?.Complete();
 
-            _size += _parameters.ArmoringSize;
-            _scaleIncrease = transform.DOScale(_size, _parameters.ArmoringAnimationDuration).OnComplete(() => _scaleIncrease = null);
+            _size += _parameters.IncreaseSizeByArmor;
+            _sizeIncrease = transform.DOScale(_size, _parameters.IncreaseSizeAnimationDuration).OnComplete(() => _sizeIncrease = null);
+
             OnSizeIncrease?.Invoke(_size);
         }
     }
@@ -55,7 +55,9 @@ namespace Game.Gameplay.Pawn.Size
     public struct PawnSizeParameters
     {
         public float StartSize;
-        public float ArmoringSize;
-        public float ArmoringAnimationDuration;
+
+        [Space]
+        public float IncreaseSizeByArmor;
+        public float IncreaseSizeAnimationDuration;
     }
 }

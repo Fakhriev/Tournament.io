@@ -90,6 +90,6 @@ namespace Game.Gameplay.TagComponents
     [Serializable]
     public struct MarkerParameters
     {
-
+        public int TestValue;
     }
 }

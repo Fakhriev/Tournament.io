@@ -14,6 +14,8 @@ namespace Game.Gameplay.Pawn.Movement
         private PawnSprintParameters _parameters;
 
         private PawnBody _body;
+
+        private float _sprintSpeed;
         private float _sprintAmount;
 
         private ISprintState _sprintState;
@@ -42,20 +44,11 @@ namespace Game.Gameplay.Pawn.Movement
             _sprintState = new SprintInactive(this, _movement, ref _parameters);
         }
 
-        private void SetSprintState(bool activeState)
-        {
-            if (activeState == IsActive)
-                return;
-
-            if (activeState)
-                _sprintState = new SprintActive(this, _movement, ref _parameters);
-            else
-                _sprintState = new SprintInactive(this, _movement, ref _parameters);
-        }
-
         public void Activate()
         {
+            _sprintSpeed = _parameters.SprintSpeed;
             _sprintAmount = _parameters.SprintMaxAmount;
+
             _sprintState = new SprintInactive(this, _movement, ref _parameters);
             _movement.SetOriginalMoveSpeed();
         }
@@ -67,7 +60,37 @@ namespace Game.Gameplay.Pawn.Movement
 
         private void RestoreSprintAmount(Apple apple)
         {
-            _sprintAmount += apple.RestoreAmount;
+            IncreaseSprintAmount(apple.RestoreAmount);
+        }
+
+        private void SetSprintState(bool activeState)
+        {
+            if (activeState == IsActive)
+                return;
+
+            if (activeState)
+                _sprintState = new SprintActive(this, _movement, ref _parameters);
+            else
+                _sprintState = new SprintInactive(this, _movement, ref _parameters);
+        }
+
+        public void IncreaseSprintAmount(float value)
+        {
+            _sprintAmount += value;
+            _sprintAmount = Mathf.Clamp(_sprintAmount, 0f, _parameters.SprintMaxAmount);
+        }
+
+        public void SetNewSprintSpeed(float value)
+        {
+            _sprintSpeed = value;
+
+            if (IsActive)
+                SetSprintSpeedToMovement();
+        }
+
+        private void SetSprintSpeedToMovement()
+        {
+            _movement.SetNewMoveSpeed(_sprintSpeed);
         }
     }
 
@@ -75,8 +98,9 @@ namespace Game.Gameplay.Pawn.Movement
     public struct PawnSprintParameters
     {
         public float SprintSpeed;
-
         public float SprintMaxAmount;
+
+        [Space]
         public float SprintAmountIncreaseSpeed;
         public float SprintAmountDecreaseSpeed;
     }

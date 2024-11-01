@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Gameplay.Utility
+namespace Game.Gameplay.Utility.Extensions
 {
     public static class TransformExtensions
     {

@@ -9,6 +9,9 @@ namespace Game.Gameplay.Abstracts
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (collision.gameObject.activeInHierarchy == false)
+                return;
+
             Base.TriggerEnter2D(collision);
         }
     }

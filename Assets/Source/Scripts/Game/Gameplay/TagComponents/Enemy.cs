@@ -1,9 +1,9 @@
+using Game.Gameplay.Abstracts;
 using Game.Gameplay.Behavior;
 using Game.Gameplay.Pawn;
 using Game.Gameplay.Pawn.Collliding;
 using Game.Gameplay.Pawn.Movement;
 using Game.Gameplay.Pawn.Movement.Sprint.SprintControll;
-using Game.Gameplay.Pawn.Size;
 using Game.Gameplay.Spawners;
 using Game.Gameplay.Utility;
 using Game.Zenject.Signals;
@@ -13,7 +13,7 @@ using Zenject;
 
 namespace Game.Gameplay.TagComponents
 {
-    public partial class Enemy : MonoBehaviour
+    public partial class Enemy : MonoBehaviour, IPawnCharacter
     {
         private Pool _pool;
         private SignalBus _signalBus;
@@ -32,6 +32,10 @@ namespace Game.Gameplay.TagComponents
 
         private int _index;
 
+        public GameObject PawnGameObject => gameObject;
+
+        public DiContainer PawnContainer => _container;
+
         [Inject]
         private void Construct(Pool pool, DiContainer container, SignalBus signalBus,
             PawnMovement movement, PawnActivator activator, PawnCollectables collectables, EnemyParameters parameters, 
@@ -42,6 +46,7 @@ namespace Game.Gameplay.TagComponents
             _container = container;
 
             _container.BindInstance(parameters.PawnPartsParameters);
+            _container.Bind<IPawnCharacter>().To<Enemy>().FromInstance(this);
             _container.Bind<ISprintController>().To<ManualSprintController>().FromNew().AsSingle();
 
             _movement = movement;
@@ -56,7 +61,7 @@ namespace Game.Gameplay.TagComponents
         private void Start()
         {
             _body = _container.Resolve<PawnBody>();
-            _body.OnHitted += Deactivate;
+            _body.OnHitted += OnHit;
 
             _enemyBehavior = _container.InstantiateComponent<EnemyBehavior>(gameObject);
             _container.Resolve<PawnParts>().SetLayers(Layers.Enemy);
@@ -78,14 +83,16 @@ namespace Game.Gameplay.TagComponents
             }
         }
 
-        private void Deactivate(PawnWeapon byWeapon)
+        private void OnHit(IHitSource hitSource)
         {
-            if (byWeapon.gameObject.layer == Layers.Boss)
+            if (hitSource.Owner is Boss || hitSource.Owner.PawnGameObject.Equals(gameObject))
                 return;
 
             gameObject.name = gameObject.name.Replace(_index.ToString(), Constants.IndexPlace);
 
             _pool.Despawn(this);
+            _activator.Deactivate();
+
             _goldCoinsSpawner.SpawnCoins(transform.position, _collectables.Parameters);
             _armorFragmentsSpawner.SpawnArmorFragments(transform.position, _collectables.Parameters);
 

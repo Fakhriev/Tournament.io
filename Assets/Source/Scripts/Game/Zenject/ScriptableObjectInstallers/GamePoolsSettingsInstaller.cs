@@ -8,6 +8,7 @@ namespace Game.Zenject.ScriptableObjectInstallers
     [CreateAssetMenu(fileName = "GamePoolsSettingsInstaller", menuName = "Installers/Game Pools Settings Installer")]
     public class GamePoolsSettingsInstaller : ScriptableObjectInstaller<GamePoolsSettingsInstaller>
     {
+        [Header("Game Pool Parameters")]
         [SerializeField]
         private PoolParameters _playerPoolParameters;
 
@@ -26,6 +27,16 @@ namespace Game.Zenject.ScriptableObjectInstallers
         [SerializeField] 
         private PoolParameters _goldCoinPoolParameters;
 
+        [SerializeField]
+        private PoolParameters _spikyShieldPoolParameters;
+
+        [SerializeField]
+        private PoolParameters _appleTrashProjectilePoolParameters;
+
+        [SerializeField]
+        private PoolParameters _lightningStrikeProjectilePoolParameters;
+
+        [Header("UI Pool Parameters")]
         [SerializeField] 
         private PoolParameters _markerPoolParameters;
 
@@ -38,6 +49,10 @@ namespace Game.Zenject.ScriptableObjectInstallers
             Container.BindInstance(_armorFragmentPoolParameters).WithId(nameof(ArmorFragment));
             Container.BindInstance(_applePoolParameters).WithId(nameof(Apple));
             Container.BindInstance(_goldCoinPoolParameters).WithId(nameof(GoldCoin));
+
+            Container.BindInstance(_spikyShieldPoolParameters).WithId(nameof(SpikyShieldObject));
+            Container.BindInstance(_appleTrashProjectilePoolParameters).WithId(nameof(AppleTrashProjectile));
+            Container.BindInstance(_lightningStrikeProjectilePoolParameters).WithId(nameof(LightningStrikeProjectile));
 
             Container.BindInstance(_markerPoolParameters).WithId(nameof(Marker));
         }

@@ -38,7 +38,7 @@ namespace Game.Gameplay.TagComponents
 
         public void Initialize()
         {
-            _interactions.OnInteract += RestoreSprintAmount;
+            _interactions.OnInteractToBody += RestoreSprintAmount;
         }
 
         public void Activate(SpawnParameters spawnParameters)

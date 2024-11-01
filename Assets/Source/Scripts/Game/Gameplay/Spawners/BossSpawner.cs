@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using Zenject;
 using Assets.Source.Scripts.Game.Gameplay.Stage;
-using Game.Gameplay.Utility;
+using Game.Gameplay.Utility.Extensions;
 using Redcode.Extensions;
 using Game.Zenject.Signals;
 

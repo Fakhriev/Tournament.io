@@ -1,6 +1,6 @@
 using Assets.Source.Scripts.Game.Gameplay.Stage;
 using Game.Gameplay.TagComponents;
-using Game.Gameplay.Utility;
+using Game.Gameplay.Utility.Extensions;
 using Redcode.Extensions;
 using System;
 using System.Collections.Generic;

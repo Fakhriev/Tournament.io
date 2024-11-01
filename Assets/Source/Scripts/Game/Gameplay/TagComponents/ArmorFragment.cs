@@ -36,7 +36,7 @@ namespace Game.Gameplay.TagComponents
 
         public void Initialize()
         {
-            _interactions.OnInteract += ArmorUp;
+            _interactions.OnInteractToBody += ArmorUp;
         }
 
         public void Activate(SpawnParameters spawnParameters)
