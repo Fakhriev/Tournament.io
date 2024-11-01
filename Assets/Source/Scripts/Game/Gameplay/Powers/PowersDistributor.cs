@@ -42,7 +42,7 @@ namespace Game.Gameplay.Powers.BehaviorComponents
 
         private PowerBase InstantiatePlayerPower()
         {
-            return _pawnContainer.InstantiateComponent<RandomPower>(_pawnGameObject);
+            return _pawnContainer.InstantiateComponent<AppleTrashThrowPower>(_pawnGameObject);
         }
 
         private PowerBase InstantiateEnemyPower()

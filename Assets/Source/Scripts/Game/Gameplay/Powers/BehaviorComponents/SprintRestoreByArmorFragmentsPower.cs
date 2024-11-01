@@ -42,7 +42,6 @@ namespace Game.Gameplay.Powers.BehaviorComponents
     [Serializable]
     public struct SprintRestoreByArmorFragmentsPowerParameters
     {
-        [Space]
         public float SprintRestoreAmount;
     }
 }

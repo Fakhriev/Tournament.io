@@ -31,6 +31,9 @@ namespace Game.Zenject.ScriptableObjectInstallers
         private PoolParameters _spikyShieldPoolParameters;
 
         [SerializeField]
+        private PoolParameters _appleTrashProjectilePoolParameters;
+
+        [SerializeField]
         private PoolParameters _lightningStrikeProjectilePoolParameters;
 
         [Header("UI Pool Parameters")]
@@ -48,6 +51,7 @@ namespace Game.Zenject.ScriptableObjectInstallers
             Container.BindInstance(_goldCoinPoolParameters).WithId(nameof(GoldCoin));
 
             Container.BindInstance(_spikyShieldPoolParameters).WithId(nameof(SpikyShieldObject));
+            Container.BindInstance(_appleTrashProjectilePoolParameters).WithId(nameof(AppleTrashProjectile));
             Container.BindInstance(_lightningStrikeProjectilePoolParameters).WithId(nameof(LightningStrikeProjectile));
 
             Container.BindInstance(_markerPoolParameters).WithId(nameof(Marker));

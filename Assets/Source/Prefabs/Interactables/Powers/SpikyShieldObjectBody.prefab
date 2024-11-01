@@ -131,6 +131,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderers:
   - {fileID: 1456677304479458174}
+  - {fileID: 680342726818988684}
+  - {fileID: 6541136122175765880}
+  - {fileID: 4437707397032896443}
+  - {fileID: 6334057231405870872}
   _colliders:
   - {fileID: 7822511309715908369}
 --- !u!1 &5150718194973481288

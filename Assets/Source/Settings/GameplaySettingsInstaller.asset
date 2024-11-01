@@ -76,6 +76,12 @@ MonoBehaviour:
     LifeTime: 30
     IncreaseSizeMultiplier: 3
     IncreaseSizeAnimationDuration: 0.15
+  _appleTrashProjectileParameters:
+    InteractableObjectPartsParameters:
+      InteractableObjectBody: {fileID: 1486274225146670246, guid: 695b09f03a3d6c849adedaa2484b4b27, type: 3}
+      BodySortingOrder: 40
+    MoveSpeed: 8
+    LifeTime: 2
   _lightningStrikeProjectileParameters:
     InteractableObjectPartsParameters:
       InteractableObjectBody: {fileID: 1486274225146670246, guid: e3425e1bf2159ae429857aa246af7eb9, type: 3}
@@ -104,6 +110,8 @@ MonoBehaviour:
   _lightningStrikePowerParameters:
     FireInterval: 5
     SpawnForwardDelta: 1.75
+  _appleTrashThrowPowerParameters:
+    SpawnRightDelta: 0.75
   _sprintIncreaseBySizePowerParameters:
     SprintIncreaseIncreaseFactor: 0.5
   _sprintRestoreByArmorFragmentsPowerParameters:

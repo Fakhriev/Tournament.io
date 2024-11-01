@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8654925569564609375}
   - component: {fileID: 1486274225146670246}
   m_Layer: 0
-  m_Name: LightningStrikeProjectileBody
+  m_Name: AppleTrashProjectileBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.85, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1318621714728872709}
@@ -48,7 +48,7 @@ MonoBehaviour:
   _spriteRenderers:
   - {fileID: 621550908732554384}
   _colliders:
-  - {fileID: 133966747772947361}
+  - {fileID: 4215883136626076889}
 --- !u!1 &7453343173751760225
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 1318621714728872709}
   - component: {fileID: 590762982651205319}
   - component: {fileID: 621550908732554384}
-  - component: {fileID: 133966747772947361}
+  - component: {fileID: 4215883136626076889}
   m_Layer: 0
   m_Name: Body 1
   m_TagString: Untagged
@@ -138,7 +138,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: d7fd9190fb4d8c34a870db302645e657, type: 3}
-  m_Color: {r: 0.90465856, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.5566038, g: 0.21791562, b: 0.21791562, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -148,8 +148,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &133966747772947361
-CapsuleCollider2D:
+--- !u!58 &4215883136626076889
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -181,5 +181,5 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.85, y: 0.95}
-  m_Direction: 0
+  serializedVersion: 2
+  m_Radius: 0.5

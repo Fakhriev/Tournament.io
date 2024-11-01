@@ -38,6 +38,9 @@ namespace Game.Zenject.ScriptableObjectInstallers
         private SpikyShieldObjectParameters _spikyShieldObjectParameters;
 
         [SerializeField]
+        private AppleTrashProjectileParameters _appleTrashProjectileParameters;
+
+        [SerializeField]
         private LightningStrikeProjectileParameters _lightningStrikeProjectileParameters;
 
         [Header("UI Components Parameters")]
@@ -66,6 +69,9 @@ namespace Game.Zenject.ScriptableObjectInstallers
 
         [SerializeField]
         private LightningStrikePowerParameters _lightningStrikePowerParameters;
+
+        [SerializeField]
+        private AppleTrashThrowPowerParameters _appleTrashThrowPowerParameters;
 
         [SerializeField]
         private SprintSpeedIncreaseBySizePowerParameters _sprintIncreaseBySizePowerParameters;
@@ -118,6 +124,7 @@ namespace Game.Zenject.ScriptableObjectInstallers
             Container.BindInstance(_goldCoinParameters);
 
             Container.BindInstance(_spikyShieldObjectParameters);
+            Container.BindInstance(_appleTrashProjectileParameters);
             Container.BindInstance(_lightningStrikeProjectileParameters);
 
             Container.BindInstance(_markerParameters);
@@ -130,6 +137,7 @@ namespace Game.Zenject.ScriptableObjectInstallers
             Container.BindInstance(_spikyShieldPowerParameters);
             Container.BindInstance(_goldMultiplierPowerParameters);
             Container.BindInstance(_lightningStrikePowerParameters);
+            Container.BindInstance(_appleTrashThrowPowerParameters);
             Container.BindInstance(_sprintIncreaseBySizePowerParameters);
             Container.BindInstance(_sprintRestoreByArmorFragmentsPowerParameters);
 
