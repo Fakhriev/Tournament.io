@@ -1,11 +1,10 @@
-using Assets.Source.Scripts.Game.Gameplay.Stage;
 using Game.Zenject.Signals;
 using Redcode.Extensions;
 using System;
 using UnityEngine;
 using Zenject;
 
-namespace Game.Gameplay.Stage
+namespace Game.Gameplay.StateServices
 {
     public class GameTimer : MonoBehaviour, IRestartObject
     {

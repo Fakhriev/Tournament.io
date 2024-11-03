@@ -1,4 +1,4 @@
-using Assets.Source.Scripts.Game.Gameplay.Stage;
+using Game.Gameplay.StateServices;
 using Zenject;
 
 namespace Game.Zenject

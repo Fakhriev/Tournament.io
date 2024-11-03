@@ -1,5 +1,5 @@
-using Assets.Source.Scripts.Game.Gameplay.Stage;
 using Game.Gameplay.Pawn;
+using Game.Gameplay.StateServices;
 using Game.Gameplay.TagComponents;
 using System;
 using System.Collections.Generic;
@@ -43,5 +43,6 @@ namespace Game.Gameplay.Spawners
     [Serializable]
     public struct GoldCoinsSpawnerParameters
     {
+
     }
 }

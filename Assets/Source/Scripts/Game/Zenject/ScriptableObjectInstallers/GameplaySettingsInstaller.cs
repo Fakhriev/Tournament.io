@@ -3,11 +3,11 @@ using Game.Gameplay.Pawn.Movement;
 using Game.Gameplay.Pawn.Size;
 using Game.Gameplay.Spawners;
 using Game.Gameplay.TagComponents;
-using Game.Gameplay.Stage;
 using Game.Gameplay.Utility;
 using UnityEngine;
 using Zenject;
 using Game.Gameplay.Powers.BehaviorComponents;
+using Game.Gameplay.StateServices;
 
 namespace Game.Zenject.ScriptableObjectInstallers
 {
@@ -103,16 +103,17 @@ namespace Game.Zenject.ScriptableObjectInstallers
 
         [Header("Utilities Parameters")]
         [SerializeField]
-        private PowersDistributorParameters _powersDistributorParameters;
+        private GameTimerParameters _gameTimerParameters;
 
-        [SerializeField] 
-        private CameraSizeCorrectorParameters _cameraSizeCorrectorParameters;
-
-        [SerializeField] 
+        [SerializeField]
         private EnemyBehaviorParameters _enemyBehaviorParameters;
 
-        [SerializeField] 
-        private GameTimerParameters _gameTimerParameters;
+        [SerializeField]
+        private PowersDistributorParameters _powersDistributorParameters;
+
+        [SerializeField]
+        private CameraSizeCorrectorParameters _cameraSizeCorrectorParameters;
+
 
         public override void InstallBindings()
         {
@@ -149,10 +150,10 @@ namespace Game.Zenject.ScriptableObjectInstallers
             Container.BindInstance(_goldCoinsSpawnerParameters);
             Container.BindInstance(_markerSpawnerParameters);
 
+            Container.BindInstance(_gameTimerParameters);
+            Container.BindInstance(_enemyBehaviorParameters);
             Container.BindInstance(_powersDistributorParameters);
             Container.BindInstance(_cameraSizeCorrectorParameters);
-            Container.BindInstance(_enemyBehaviorParameters);
-            Container.BindInstance(_gameTimerParameters);
         }
     }
 }

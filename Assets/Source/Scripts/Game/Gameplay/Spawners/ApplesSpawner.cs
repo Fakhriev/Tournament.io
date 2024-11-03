@@ -1,4 +1,4 @@
-using Assets.Source.Scripts.Game.Gameplay.Stage;
+using Game.Gameplay.StateServices;
 using Game.Gameplay.TagComponents;
 using Game.Gameplay.Utility.Extensions;
 using Redcode.Extensions;

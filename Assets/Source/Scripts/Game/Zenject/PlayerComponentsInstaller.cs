@@ -1,4 +1,5 @@
-﻿using Game.Gameplay.Pawn.Movement;
+﻿using Game.Gameplay.Pawn.Collliding;
+using Game.Gameplay.Pawn.Movement;
 using Game.Gameplay.Pawn.Size;
 using Game.Gameplay.TagComponents;
 using UnityEngine;
@@ -35,6 +36,12 @@ namespace Game.Zenject
                 .FromComponentOn(_playerGameObject)
                 .AsSingle()
                 .NonLazy();
+
+            Container
+                .Bind<PawnBody>()
+                .FromComponentInHierarchy(_playerGameObject)
+                .AsSingle()
+                .Lazy();
         }
     }
 }

@@ -75,7 +75,7 @@ namespace Game.Gameplay.TagComponents
             _activator.Deactivate();
 
             _armorFragmentsSpawner.SpawnArmorFragments(transform.position, _collectables.Parameters);
-            _signalBus.Fire<PlayerDieSignal>(new(this));
+            _signalBus.Fire<PlayerDieSignal>(new(this, hitSource));
         }
 
         [ContextMenu("Hit By Boss")]

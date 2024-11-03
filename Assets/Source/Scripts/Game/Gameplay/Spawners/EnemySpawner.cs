@@ -1,14 +1,13 @@
 using Game.Gameplay.TagComponents;
-using Game.Gameplay.Stage;
 using Game.Gameplay.Utility.Extensions;
 using Redcode.Extensions;
 using System;
 using System.Linq;
 using UnityEngine;
 using Zenject;
-using Assets.Source.Scripts.Game.Gameplay.Stage;
 using System.Collections.Generic;
 using Game.Zenject.Signals;
+using Game.Gameplay.StateServices;
 
 namespace Game.Gameplay.Spawners
 {

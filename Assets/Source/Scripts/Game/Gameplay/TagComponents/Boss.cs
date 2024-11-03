@@ -98,7 +98,7 @@ namespace Game.Gameplay.TagComponents
             _goldCoinsSpawner.SpawnCoins(transform.position, _collectables.Parameters);
             _armorFragmentsSpawner.SpawnArmorFragments(transform.position, _collectables.Parameters);
 
-            _signalBus.Fire<BossDieSignal>(new(this));
+            _signalBus.Fire<BossDieSignal>(new(this, hitSource));
         }
     }
 

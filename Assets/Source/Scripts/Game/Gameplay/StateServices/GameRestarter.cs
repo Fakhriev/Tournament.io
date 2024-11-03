@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Source.Scripts.Game.Gameplay.Stage
+namespace Game.Gameplay.StateServices
 {
     public class GameRestarter : MonoBehaviour
     {

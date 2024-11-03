@@ -5,7 +5,7 @@ using Game.Zenject.Signals;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.Source.Scripts.Game.Gameplay.Stage
+namespace Game.Gameplay.StateServices
 {
     public class GameEnder : MonoBehaviour
     {

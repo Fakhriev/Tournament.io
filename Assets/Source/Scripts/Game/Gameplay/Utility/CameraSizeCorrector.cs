@@ -1,6 +1,6 @@
-using Assets.Source.Scripts.Game.Gameplay.Stage;
 using DG.Tweening;
 using Game.Gameplay.Pawn.Size;
+using Game.Gameplay.StateServices;
 using System;
 using UnityEngine;
 using Zenject;
