@@ -67,7 +67,10 @@ namespace Game.Gameplay.StateServices
         private void GameEnd(GameEndType gameEndType)
         {
             _signalBus.Fire(new GameEndSignal(gameEndType));
+
             _gameCanvas.ActivateGameEnd(gameEndType);
+
+            _signalBus.Fire(new LateGameEndSignal(gameEndType));
         }
     }
 }

@@ -20,6 +20,7 @@ namespace Game.Zenject
             
             Container.DeclareSignal<TimerEndSignal>();
             Container.DeclareSignal<GameEndSignal>();
+            Container.DeclareSignal<LateGameEndSignal>();
         }
     }
 }

@@ -2,11 +2,11 @@
 
 namespace Game.Zenject.Signals
 {
-    public class GameEndSignal
+    public class LateGameEndSignal
     {
         public GameEndType GameEndType { get; private set; }
 
-        public GameEndSignal(GameEndType gameEndType)
+        public LateGameEndSignal(GameEndType gameEndType)
         {
             GameEndType = gameEndType;
         }
