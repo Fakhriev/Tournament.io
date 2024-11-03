@@ -6,10 +6,11 @@ namespace Game.UI
 {
     public class GameCanvas : MonoBehaviour, IRestartObject
     {
-        [Header("Parameters")]
-        [SerializeField] private GameEnd _gameEnd;
+        [Header("Game End UI")]
+        [SerializeField] 
+        private GameEnd _gameEnd;
 
-        [Header("Parameters")]
+        [Header("Game UI")]
         [SerializeField] 
         private GameObject[] _gameplayUI;
 

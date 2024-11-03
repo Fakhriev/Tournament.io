@@ -8,6 +8,10 @@ namespace Game.UI
 {
     public class GameEnd : MonoBehaviour
     {
+        [Header("References")]
+        [SerializeField] 
+        private GameResultsWindow _resultsWindow;
+
         [Header("Components")]
         [SerializeField] 
         private TextMeshProUGUI _tmpGameEnd;
@@ -16,7 +20,6 @@ namespace Game.UI
         private Button _btnRestart;
 
         private GameRestarter _gameRestarter;
-
 
         [Inject]
         private void Construct(GameRestarter gameRestarter)
@@ -32,6 +35,9 @@ namespace Game.UI
         public void ShowGameEndUI(GameEndType gameEndType)
         {
             _tmpGameEnd.text = $"Game End: [{gameEndType}]";
+            
+            _resultsWindow.Show(gameEndType);
+            
             gameObject.SetActive(true);
         }
 
@@ -44,7 +50,7 @@ namespace Game.UI
     public enum GameEndType
     {
         Victory,
-        Loose,
+        Lose,
         Tie
     }
 }

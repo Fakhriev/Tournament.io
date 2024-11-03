@@ -8,6 +8,7 @@ using UnityEngine;
 using Zenject;
 using Game.Gameplay.Powers.BehaviorComponents;
 using Game.Gameplay.StateServices;
+using Game.UI;
 
 namespace Game.Zenject.ScriptableObjectInstallers
 {
@@ -42,10 +43,6 @@ namespace Game.Zenject.ScriptableObjectInstallers
 
         [SerializeField]
         private LightningStrikeProjectileParameters _lightningStrikeProjectileParameters;
-
-        [Header("UI Components Parameters")]
-        [SerializeField]
-        private MarkerParameters _markerParameters;
 
         [Header("Pawn Parameters")]
         [SerializeField]
@@ -114,6 +111,12 @@ namespace Game.Zenject.ScriptableObjectInstallers
         [SerializeField]
         private CameraSizeCorrectorParameters _cameraSizeCorrectorParameters;
 
+        [Header("UI Components Parameters")]
+        [SerializeField]
+        private MarkerParameters _markerParameters;
+
+        [SerializeField]
+        private GameRewardsCounter.Parameters _gameResultsParameters;
 
         public override void InstallBindings()
         {
@@ -127,8 +130,6 @@ namespace Game.Zenject.ScriptableObjectInstallers
             Container.BindInstance(_spikyShieldObjectParameters);
             Container.BindInstance(_appleTrashProjectileParameters);
             Container.BindInstance(_lightningStrikeProjectileParameters);
-
-            Container.BindInstance(_markerParameters);
 
             Container.BindInstance(_pawnMovementParameters);
             Container.BindInstance(_pawnSprintParameters);
@@ -154,6 +155,9 @@ namespace Game.Zenject.ScriptableObjectInstallers
             Container.BindInstance(_enemyBehaviorParameters);
             Container.BindInstance(_powersDistributorParameters);
             Container.BindInstance(_cameraSizeCorrectorParameters);
+
+            Container.BindInstance(_markerParameters);
+            Container.BindInstance(_gameResultsParameters);
         }
     }
 }

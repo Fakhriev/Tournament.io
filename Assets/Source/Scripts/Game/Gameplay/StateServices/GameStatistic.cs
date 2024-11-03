@@ -1,7 +1,6 @@
 ﻿using Game.Gameplay.Pawn.Collliding;
 using Game.Gameplay.TagComponents;
 using Game.Zenject.Signals;
-using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 using Zenject;

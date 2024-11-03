@@ -88,8 +88,6 @@ MonoBehaviour:
       BodySortingOrder: 50
     MoveSpeed: 15
     LifeTime: 2.5
-  _markerParameters:
-    TestValue: 0
   _pawnMovementParameters:
     MoveSpeed: 5
   _pawnSprintParameters:
@@ -133,10 +131,8 @@ MonoBehaviour:
   _markerSpawnerParameters:
     EnemyMarkerColor: {r: 1, g: 0.11022441, b: 0, a: 1}
     BossMarkerColor: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
-  _cameraSizeCorrectorParameters:
-    StartOrtographicSize: 7.5
-    IncreaseSizeValue: 0.25
-    SizeIncreaseAnimationDuration: 0.15
+  _gameTimerParameters:
+    RoundTime: 91
   _enemyBehaviorParameters:
     MinimalTargetPointFindSqrDistance: 100
     MaximalTargetPointFindSqrDistance: 625
@@ -147,5 +143,17 @@ MonoBehaviour:
     MinimalSprintPercentsToSprint: 0.15
     MinimalSprintPercentsToFindApples: 0.75
     SprintSaveThresholdPercents: 0.1
-  _gameTimerParameters:
-    RoundTime: 91
+  _cameraSizeCorrectorParameters:
+    StartOrtographicSize: 7.5
+    IncreaseSizeValue: 0.25
+    SizeIncreaseAnimationDuration: 0.15
+  _gameResultsParameters:
+    ArmorsFragmentFactor: 5
+    ApplesFactor: 3
+    GoldCoinsFactor: 75
+    EnemiesFactor: 25
+    BossFactor: 50
+    AliveFactor: 1
+    VictoryFactor: 1.5
+    LoseFactor: 0.5
+    TieFactor: 1

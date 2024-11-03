@@ -39,7 +39,7 @@ namespace Game.Gameplay.StateServices
 
         private void OnPlayerDie(PlayerDieSignal playerDieSignal)
         {
-            GameEnd(GameEndType.Loose);
+            GameEnd(GameEndType.Lose);
         }
 
         private void OnEnemyDie(EnemyDieSignal enemyDieSignal)
@@ -66,8 +66,8 @@ namespace Game.Gameplay.StateServices
 
         private void GameEnd(GameEndType gameEndType)
         {
-            _gameCanvas.ActivateGameEnd(gameEndType);
             _signalBus.Fire(new GameEndSignal(gameEndType));
+            _gameCanvas.ActivateGameEnd(gameEndType);
         }
     }
 }

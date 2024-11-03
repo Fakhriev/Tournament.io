@@ -1,5 +1,4 @@
 ﻿using Game.UI;
-using UnityEngine;
 
 namespace Game.Zenject.Signals
 {
