@@ -12,7 +12,8 @@ namespace Game.Gameplay.Spawners
 {
     public class BossSpawner : MonoBehaviour, IRestartObject
     {
-        [SerializeField] private Transform[] _spawnPoints;
+        [SerializeField] 
+        private Transform[] _spawnPoints;
 
         private Boss.Pool _pool;
         private SignalBus _signalBus;

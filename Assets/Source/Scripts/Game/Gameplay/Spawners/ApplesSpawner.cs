@@ -12,7 +12,8 @@ namespace Game.Gameplay.Spawners
 {
     public class ApplesSpawner : MonoBehaviour, IRestartObject
     {
-        [SerializeField] private Transform[] _spawnPoints;
+        [SerializeField] 
+        private Transform[] _spawnPoints;
 
         private Apple.Pool _pool;
         private ApplesSpawnerParameters _parameters;

@@ -7,7 +7,7 @@ using Zenject;
 
 namespace Assets.Source.Scripts.Game.Gameplay.Stage
 {
-    public class GameStage : MonoBehaviour
+    public class GameEnder : MonoBehaviour
     {
         private SignalBus _signalBus;
 

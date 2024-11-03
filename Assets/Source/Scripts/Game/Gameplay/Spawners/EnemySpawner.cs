@@ -14,7 +14,8 @@ namespace Game.Gameplay.Spawners
 {
     public class EnemySpawner : MonoBehaviour, IRestartObject
     {
-        [SerializeField] private Transform[] _spawnPoints;
+        [SerializeField] 
+        private Transform[] _spawnPoints;
 
         private Enemy.Pool _pool;
         private SignalBus _signalBus;

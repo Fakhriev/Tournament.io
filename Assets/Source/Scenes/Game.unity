@@ -1845,7 +1845,7 @@ GameObject:
   - component: {fileID: 589808265}
   - component: {fileID: 589808266}
   m_Layer: 0
-  m_Name: GameSceneInstaller
+  m_Name: SceneInterfacesInstaller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3205,6 +3205,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1100431567}
+  - component: {fileID: 1100431569}
   - component: {fileID: 1100431568}
   m_Layer: 0
   m_Name: GameServicesInstaller
@@ -3254,6 +3255,20 @@ MonoBehaviour:
   _useSceneContext: 1
   _context: {fileID: 1463146569}
   _bindType: 0
+--- !u!114 &1100431569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100431566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec91314d36d57f64f818f4371723c2da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _softCurrency:
+    _value: 0
 --- !u!1 &1107125729
 GameObject:
   m_ObjectHideFlags: 0
@@ -3265,7 +3280,7 @@ GameObject:
   - component: {fileID: 1107125730}
   - component: {fileID: 1107125731}
   m_Layer: 0
-  m_Name: GameStage
+  m_Name: GameEnder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4093,8 +4108,8 @@ Transform:
   - {fileID: 589808265}
   - {fileID: 750236780}
   - {fileID: 1696315804}
-  - {fileID: 1222540195}
   - {fileID: 1100431567}
+  - {fileID: 1222540195}
   m_Father: {fileID: 482090158}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1463146569
@@ -4114,6 +4129,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6bc631ef03d3847418701c223cbcc9eb, type: 2}
   _monoInstallers:
   - {fileID: 589808266}
+  - {fileID: 1100431569}
   - {fileID: 750236781}
   - {fileID: 1696315805}
   _installerPrefabs: []
