@@ -1,8 +1,9 @@
-using Game.Gameplay.StateServices;
-using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Zenject;
+using TMPro;
+using Game.Gameplay.StateServices;
 
 namespace Game.UI
 {
@@ -12,12 +13,16 @@ namespace Game.UI
         [SerializeField] 
         private GameResultsWindow _resultsWindow;
 
-        [Header("Components")]
+        [Header("Components - Texts")]
         [SerializeField] 
         private TextMeshProUGUI _tmpGameEnd;
 
-        [SerializeField] 
-        private Button _btnRestart;
+        [Header("Components - Buttons")]
+        [SerializeField]
+        private Button _buttonRestart;
+
+        [SerializeField]
+        private Button _buttonMenu;
 
         private GameRestarter _gameRestarter;
 
@@ -29,7 +34,8 @@ namespace Game.UI
 
         private void Start()
         {
-            _btnRestart.onClick.AddListener(RestartGame);
+            _buttonRestart.onClick.AddListener(RestartGame);
+            _buttonMenu.onClick.AddListener(LoadMenuScene);
         }
 
         public void ShowGameEndUI(GameEndType gameEndType)
@@ -44,6 +50,11 @@ namespace Game.UI
         private void RestartGame()
         {
             _gameRestarter.RestartGame();
+        }
+
+        private void LoadMenuScene()
+        {
+            SceneManager.LoadScene("Menu");
         }
     }
 
