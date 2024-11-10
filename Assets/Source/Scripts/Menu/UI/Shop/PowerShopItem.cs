@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Menu.UI.Shop
 {
-    public class ShopItem : MonoBehaviour
+    public partial class PowerShopItem : MonoBehaviour
     {
         [Header("Components - Texts")]
         [SerializeField] 
@@ -42,8 +42,10 @@ namespace Menu.UI.Shop
             _buttonEquip.onClick.AddListener(OnEquippedClicked);
         }
 
-        public void Initialize()
+        public void Activate(SpawnParameters spawnParameters)
         {
+            gameObject.name = $"{nameof(PowerShopItem)} - [{spawnParameters.PowerShopData.PowerIdentifier}]";
+
             //Сюда приходить информация:
             //1) О самом копье: название, описание, стоимость
             //2) Данные игрока о копье: закрыто, куплено, экипировано

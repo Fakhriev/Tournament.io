@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Game.Gameplay.Pools
+namespace Pools
 {
     [Serializable]
     public struct PoolParameters

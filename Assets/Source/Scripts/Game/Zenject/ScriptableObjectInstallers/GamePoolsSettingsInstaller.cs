@@ -1,4 +1,4 @@
-using Game.Gameplay.Pools;
+using Pools;
 using Game.Gameplay.TagComponents;
 using UnityEngine;
 using Zenject;
@@ -8,7 +8,7 @@ namespace Game.Zenject.ScriptableObjectInstallers
     [CreateAssetMenu(fileName = "GamePoolsSettingsInstaller", menuName = "Installers/Game Pools Settings Installer")]
     public class GamePoolsSettingsInstaller : ScriptableObjectInstaller<GamePoolsSettingsInstaller>
     {
-        [Header("Game Pool Parameters")]
+        [Header("Game Pools Parameters")]
         [SerializeField]
         private PoolParameters _playerPoolParameters;
 

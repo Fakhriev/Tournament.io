@@ -2,7 +2,7 @@ using Game.Gameplay.Utility;
 using Game.Gameplay.TagComponents;
 using UnityEngine;
 using Zenject;
-using Game.Gameplay.Pools;
+using Pools;
 
 namespace Game.Zenject
 {

@@ -1876,7 +1876,7 @@ GameObject:
   - component: {fileID: 589808265}
   - component: {fileID: 589808266}
   m_Layer: 0
-  m_Name: SceneInterfacesInstaller
+  m_Name: GameSceneInterfacesInstaller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7908900efde4771429e94c055da39c66, type: 3}
+  m_Name: ShopElementsInstaller
+  m_EditorClassIdentifier: 
+  _powersShopData:
+  - Name: Simple Spear
+    Description: 
+    Cost: 0
+    <PowerIdentifier>k__BackingField: EmptyPower
+  - Name: Midas Spear
+    Description: Multiply gold by 2
+    Cost: 500
+    <PowerIdentifier>k__BackingField: GoldMultiplierPower
+  - Name: Hephaestus Spear
+    Description: Sprint restore with eating Armor Fragments
+    Cost: 750
+    <PowerIdentifier>k__BackingField: SprintRestoreByArmorFragmentsPower
+  - Name: Dionis Spear
+    Description: Fire with eated Apples
+    Cost: 1000
+    <PowerIdentifier>k__BackingField: AppleTrashThrowPower
+  - Name: Athena Spear
+    Description: Get a Spiky Shield
+    Cost: 1250
+    <PowerIdentifier>k__BackingField: SpikyShieldPower
+  - Name: Hermes Spear
+    Description: Sprint speed increasing with size
+    Cost: 1500
+    <PowerIdentifier>k__BackingField: SprintSpeedIncreaseBySizePower
+  - Name: Medusa Spear
+    Description: Transform into Random Spear
+    Cost: 1750
+    <PowerIdentifier>k__BackingField: RandomPower
+  - Name: Zues Spear
+    Description: Fire Lightning Strikes forward
+    Cost: 2000
+    <PowerIdentifier>k__BackingField: LightningStrikePower

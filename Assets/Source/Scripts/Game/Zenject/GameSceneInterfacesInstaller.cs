@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Game.Zenject
 {
-    public class SceneInterfacesInstaller : MonoInstaller
+    public class GameSceneInterfacesInstaller : MonoInstaller
     {
         public override void InstallBindings()
         {

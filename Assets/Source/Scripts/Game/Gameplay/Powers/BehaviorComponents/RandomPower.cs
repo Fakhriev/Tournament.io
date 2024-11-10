@@ -1,3 +1,4 @@
+using Extensions;
 using Game.Gameplay.Utility.Extensions;
 using Redcode.Extensions;
 using Sirenix.OdinInspector;
@@ -35,11 +36,7 @@ namespace Game.Gameplay.Powers.BehaviorComponents
 
         public static IEnumerable<Type> GetPowerBaseDerivedTypes()
         {
-            return AppDomain
-                .CurrentDomain
-                .GetAssemblies()
-                .SelectMany(assembly => assembly.GetTypes())
-                .Where(type => type.IsSubclassOf(typeof(PowerBase)));
+            return typeof(PowerBase).GetDerivedTypes();
         }
     }
 
