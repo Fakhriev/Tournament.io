@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7908900efde4771429e94c055da39c66, type: 3}
   m_Name: ShopElementsInstaller
   m_EditorClassIdentifier: 
-  _powersShopData:
+  _shopPowersData:
   - Name: Simple Spear
-    Description: 
+    Description: Do nothing
     Cost: 0
     <PowerIdentifier>k__BackingField: EmptyPower
   - Name: Midas Spear

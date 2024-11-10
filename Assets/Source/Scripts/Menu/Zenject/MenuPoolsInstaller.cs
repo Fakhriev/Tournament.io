@@ -26,11 +26,11 @@ namespace Menu.Zenject
         public override void InstallBindings()
         {
             Container
-                .BindMemoryPool<PowerShopItem, PowerShopItem.Pool>()
+                .BindMemoryPool<ShopPowerItem, ShopPowerItem.Pool>()
                 .WithInitialSize(_powerShopItemsPoolParameters.InitialSize)
                 .WithMaxSize(_powerShopItemsPoolParameters.MaxSize)
                 .FromComponentInNewPrefab(_powerShopItemPrefab)
-                .WithGameObjectName(nameof(PowerShopItem))
+                .WithGameObjectName(nameof(ShopPowerItem))
                 .UnderTransform(_powerShopItemParent);
         }
     }

@@ -1,5 +1,7 @@
 using Menu.Data;
 using Menu.UI.Shop;
+using Services;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -8,29 +10,42 @@ namespace Menu.UI
 {
     public class ShopWindow : MonoBehaviour, IInitializable
     {
-        [Header("Refernces - Buttons")]
+        [Header("Components - Texts")]
+        [SerializeField]
+        private TextMeshProUGUI _tmpSoftCurrencyAmount;
+
+        [Header("Components - Buttons")]
         [SerializeField]
         private Button _buttonMenu;
 
         private MenuWindow _menuWindow;
-        private PowerShopData[] _powerShopItemsData;
-        private PowerShopItem.Pool _powerShopItemsPool;
+        private SoftCurrencyService _softCurrencyService;
+
+        private ShopPowerItem.Pool _powerShopItemsPool;
+        private ShopPowerData[] _shopPowersData;
 
         [Inject]
-        private void Construct(MenuWindow menuWindow, PowerShopData[] powerShopItems, PowerShopItem.Pool powerShopItemsPool)
+        private void Construct(MenuWindow menuWindow, SoftCurrencyService softCurrencyService,
+            ShopPowerItem.Pool powerShopItemsPool, ShopPowerData[] shopPowersData)
         {
             _menuWindow = menuWindow;
-            _powerShopItemsData = powerShopItems;
+            _softCurrencyService = softCurrencyService;
+            
             _powerShopItemsPool = powerShopItemsPool;
+            _shopPowersData = shopPowersData;
         }
 
         public void Initialize()
         {
-            foreach(var powerShopData in _powerShopItemsData)
+            for (int i = 0; i < _shopPowersData.Length; i++)
             {
-                var spawnParameters = new PowerShopItem.SpawnParameters(powerShopData);
+                var powerShopData = _shopPowersData[i];
+                var spawnParameters = new ShopPowerItem.SpawnParameters(powerShopData);
                 var powerShopItem = _powerShopItemsPool.Spawn(spawnParameters);
+                powerShopItem.transform.SetAsLastSibling();
             }
+
+            UpdateState();
         }
 
         private void Start()
@@ -52,6 +67,17 @@ namespace Menu.UI
         public void Open()
         {
             gameObject.SetActive(true);
+            UpdateState();
+        }
+
+        public void UpdateState()
+        {
+            foreach (var shopPowerItem in _powerShopItemsPool.ActiveItems)
+            {
+                shopPowerItem.UpdateVisualState();
+            }
+
+            _tmpSoftCurrencyAmount.text = _softCurrencyService.Amount.ToString();
         }
     }
 }

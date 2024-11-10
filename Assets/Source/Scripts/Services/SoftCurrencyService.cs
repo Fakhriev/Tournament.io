@@ -1,15 +1,27 @@
-﻿using System;
+﻿using Data;
+using System;
 using UnityEngine;
 
-namespace Game.Gameplay.GameServices
+namespace Services
 {
     [Serializable]
-    public class SoftCurrency
+    public class SoftCurrencyService
     {
-        [SerializeField]
-        private int _value;
+        [HideInInspector]
+        private PlayerData _playerData;
+
+        private int _value
+        {
+            get => _playerData.softCurrencyAmount;
+            set => _playerData.softCurrencyAmount = value;
+        }
 
         public int Amount => _value;
+
+        public SoftCurrencyService(PlayerData playerData)
+        {
+            _playerData = playerData;
+        }
 
         public bool IsEnough(int amount)
         {

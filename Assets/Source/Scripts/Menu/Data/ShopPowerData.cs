@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Menu.Data
 {
     [Serializable]
-    public class PowerShopData
+    public class ShopPowerData
     {
         public string Name;
         public string Description;
@@ -14,9 +14,15 @@ namespace Menu.Data
         [field: ReadOnly, SerializeField]
         public string PowerIdentifier { get; private set; }
 
-        public PowerShopData(string powerIdentifier)
+        public ShopPowerData(string powerIdentifier)
         {
             PowerIdentifier = powerIdentifier;
+        }
+
+        [Button]
+        private void CopyIdentifier()
+        {
+            GUIUtility.systemCopyBuffer = PowerIdentifier;
         }
     }
 }

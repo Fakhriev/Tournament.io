@@ -1,21 +1,21 @@
-﻿using Game.Gameplay.GameServices;
-using Game.Zenject.Signals;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
+using Services;
+using Game.Zenject.Signals;
 
 namespace Game.Gameplay.StateServices
 {
     public class GameRewardsGiver : MonoBehaviour
     {
         private SignalBus _signalBus;
-        private SoftCurrency _softCurrency;
+        private SoftCurrencyService _softCurrencyService;
         private GameRewardsCounter _rewardCounter;
 
         [Inject]
-        private void Construct(SignalBus signalBus, SoftCurrency softCurrency, GameRewardsCounter rewardsCounter)
+        private void Construct(SignalBus signalBus, SoftCurrencyService softCurrencyService, GameRewardsCounter rewardsCounter)
         {
             _signalBus = signalBus;
-            _softCurrency = softCurrency;
+            _softCurrencyService = softCurrencyService;
             _rewardCounter = rewardsCounter;
         }
 
@@ -26,7 +26,7 @@ namespace Game.Gameplay.StateServices
 
         private void OnGameEnd(LateGameEndSignal lateGameEndSignal)
         {
-            _softCurrency.Add(_rewardCounter.TotalGameSoftCurrency);
+            _softCurrencyService.Add(_rewardCounter.TotalGameSoftCurrency);
         }
     }
 }

@@ -12,11 +12,11 @@ namespace Menu.Zenject.ScriptableObjectsInstaller
     public class ShopElementsInstaller : ScriptableObjectInstaller<ShopElementsInstaller>
     {
         [SerializeField, ListDrawerSettings(HideAddButton = true, HideRemoveButton = false, ShowFoldout = false)]
-        private PowerShopData[] _powersShopData;
+        private ShopPowerData[] _shopPowersData;
 
         public override void InstallBindings()
         {
-            Container.BindInstances(_powersShopData);
+            Container.BindInstances(_shopPowersData);
         }
 
         [Button]
@@ -24,27 +24,27 @@ namespace Menu.Zenject.ScriptableObjectsInstaller
         {
             var powersTypes = typeof(PowerBase).GetDerivedTypes();
 
-            if (_powersShopData == null)
-                _powersShopData = new PowerShopData[0];
+            if (_shopPowersData == null)
+                _shopPowersData = new ShopPowerData[0];
 
-            var powersList = _powersShopData.ToList();
+            var powersList = _shopPowersData.ToList();
 
 
             foreach (var powerType in powersTypes)
             {
                 if(powersList.Any(p => p.PowerIdentifier.Equals(powerType.Name)) == false)
                 {
-                    powersList.Add(new PowerShopData(powerType.Name));
+                    powersList.Add(new ShopPowerData(powerType.Name));
                 }
             }
 
-            _powersShopData = powersList.ToArray();
+            _shopPowersData = powersList.ToArray();
         }
 
         [Button]
         private void Clear()
         {
-            _powersShopData = new PowerShopData[0];
+            _shopPowersData = new ShopPowerData[0];
         }
     }
 }
