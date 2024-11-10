@@ -9,16 +9,17 @@ namespace Game.Gameplay.TagComponents
         {
             public List<Enemy> ActiveEnemies = new();
 
-            protected override void OnSpawned(Enemy item)
+            protected override void OnSpawned(Enemy enemy)
             {
-                base.OnSpawned(item);
-                ActiveEnemies.Add(item);
+                base.OnSpawned(enemy);
+                ActiveEnemies.Add(enemy);
             }
 
-            protected override void OnDespawned(Enemy item)
+            protected override void OnDespawned(Enemy enemy)
             {
-                base.OnDespawned(item);
-                ActiveEnemies.Remove(item);
+                base.OnDespawned(enemy);
+                ActiveEnemies.Remove(enemy);
+                enemy.Deactivate();
             }
 
             protected override void Reinitialize(SpawnParameters spawnParameters, Enemy enemy)

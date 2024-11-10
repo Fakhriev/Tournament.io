@@ -26,6 +26,7 @@ namespace Game.Gameplay.StateServices
 
         private void Start()
         {
+            _signalBus.Subscribe<GameEndSignal>(OnGameEnd);
             StartTimer();
         }
 
@@ -52,6 +53,11 @@ namespace Game.Gameplay.StateServices
             _timeLeft = 0f;
             _timerEnded = true;
             _signalBus.Fire<TimerEndSignal>();
+        }
+
+        private void OnGameEnd()
+        {
+            _timerEnded = true;
         }
 
         public void Restart()

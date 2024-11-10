@@ -24,6 +24,7 @@ namespace Game.Gameplay.TagComponents
             {
                 base.OnDespawned(boss);
                 BossesList.Remove(boss);
+                boss.Deactivate();
             }
 
             protected override void Reinitialize(SpawnParameters spawnParameters, Boss boss)

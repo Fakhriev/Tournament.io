@@ -25,6 +25,7 @@ namespace Game.Gameplay.TagComponents
             {
                 base.OnDespawned(player);
                 PlayersList.Remove(player);
+                player.Deactivate();
             }
 
             protected override void Reinitialize(SpawnParameters spawnParameters, Player player)

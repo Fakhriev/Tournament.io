@@ -1,12 +1,16 @@
+using Extensions;
 using Game.Gameplay.Abstracts;
 using Game.Gameplay.TagComponents;
+using Redcode.Extensions;
+using Services;
 using System;
+using System.Linq;
 using UnityEngine;
 using Zenject;
 
 namespace Game.Gameplay.Powers.BehaviorComponents
 {
-    public class PowersDistributor : MonoBehaviour
+    public class PowersDistributor : MonoBehaviour, IInitializable
     {
         private DiContainer _container;
         private PowersDistributorParameters _parameters;
@@ -14,11 +18,21 @@ namespace Game.Gameplay.Powers.BehaviorComponents
         private DiContainer _pawnContainer;
         private GameObject _pawnGameObject;
 
+        private PowersService _powersService;
+        private Type[] _powersTypes;
+
         [Inject]
-        private void Construct(DiContainer container, PowersDistributorParameters parameters)
+        private void Construct(DiContainer container, PowersDistributorParameters parameters,
+            PowersService powersService)
         {
             _container = container;
             _parameters = parameters;
+            _powersService = powersService;
+        }
+
+        public void Initialize()
+        {
+            _powersTypes = typeof(PowerBase).GetDerivedTypes().ToArray();
         }
 
         public PowerBase InstantiatePower(DiContainer pawnContainer, IPawnCharacter pawnCharacter)
@@ -42,12 +56,14 @@ namespace Game.Gameplay.Powers.BehaviorComponents
 
         private PowerBase InstantiatePlayerPower()
         {
-            return _pawnContainer.InstantiateComponent<AppleTrashThrowPower>(_pawnGameObject);
+            var playerPowerType = _powersTypes.First(p => p.Name.Equals(_powersService.GetEquiped().identifier));
+            return _pawnContainer.InstantiateComponent(playerPowerType, _pawnGameObject) as PowerBase;
         }
 
         private PowerBase InstantiateEnemyPower()
         {
-            return _pawnContainer.InstantiateComponent<EmptyPower>(_pawnGameObject);
+            var enemyPowerType = _powersTypes.GetRandomElement();
+            return _pawnContainer.InstantiateComponent(enemyPowerType, _pawnGameObject) as PowerBase;
         }
 
         private PowerBase InstantiateBossPower()

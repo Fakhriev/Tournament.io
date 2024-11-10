@@ -61,7 +61,7 @@ namespace Game.Gameplay.StateServices
 
         private bool IsEveryEnemyKilled()
         {
-            return _enemyPool.NumActive == 0 && _bossSpawner.BossSpawned && _bossPool.NumActive == 0;
+            return _enemyPool.NumActive == 0 && _bossPool.NumActive == 0;
         }
 
         private void GameEnd(GameEndType gameEndType)

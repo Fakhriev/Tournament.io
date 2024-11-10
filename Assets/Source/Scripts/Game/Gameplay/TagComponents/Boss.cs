@@ -93,12 +93,16 @@ namespace Game.Gameplay.TagComponents
                 return;
 
             _pool.Despawn(this);
-            _activator.Deactivate();
 
             _goldCoinsSpawner.SpawnCoins(transform.position, _collectables.Parameters);
             _armorFragmentsSpawner.SpawnArmorFragments(transform.position, _collectables.Parameters);
 
             _signalBus.Fire<BossDieSignal>(new(this, hitSource));
+        }
+
+        public void Deactivate()
+        {
+            _activator.Deactivate();
         }
     }
 
