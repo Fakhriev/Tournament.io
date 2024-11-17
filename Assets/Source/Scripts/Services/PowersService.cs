@@ -15,6 +15,19 @@ namespace Services
             _playerData = playerData;
         }
 
+        public void SetUnlocked(string powerIdentifier)
+        {
+            foreach (var power in _playerData.powers)
+            {
+                if (power.identifier.Equals(powerIdentifier) == false)
+                {
+                    continue;
+                }
+
+                power.state = PlayerPowerData.State.Unlocked;
+            }
+        }
+
         public void SetEquiped(string powerIdentifier)
         {
             foreach (var power in _playerData.powers)

@@ -75,8 +75,14 @@ namespace Menu.UI.Shop
         {
             if (_softCurrencyService.TryToSpend(_shopPowerData.Cost))
             {
-                EquipThisPower();
+                UnlockThisPower();
             }
+        }
+
+        private void UnlockThisPower()
+        {
+            _powersService.SetUnlocked(_shopPowerData.PowerIdentifier);
+            _shopWindow.UpdateState();
         }
 
         private void OnEquippedClicked()

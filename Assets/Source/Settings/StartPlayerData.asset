@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StartPlayerData
   m_EditorClassIdentifier: 
   <PlayerData>k__BackingField:
-    softCurrencyAmount: 15
+    softCurrencyAmount: 15000
     powers:
     - identifier: EmptyPower
       state: 2
