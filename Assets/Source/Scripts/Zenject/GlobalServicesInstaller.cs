@@ -19,7 +19,12 @@ namespace Zenject
         public override void InstallBindings()
         {
             var startPlayerData = _startPlayerData.PlayerData;
-            _playerData = new PlayerData(startPlayerData.softCurrencyAmount, new List<PlayerPowerData>(startPlayerData.powers));
+            var startPlayerPowersData = new List<PlayerPowerData>();
+
+            foreach(var playerPowerData in startPlayerData.powers)
+                startPlayerPowersData.Add(new(playerPowerData.identifier, playerPowerData.state));
+
+            _playerData = new PlayerData(startPlayerData.softCurrencyAmount, startPlayerPowersData);
 
             var powersService = new PowersService(_playerData);
             var softCurrencyService = new SoftCurrencyService(_playerData);
